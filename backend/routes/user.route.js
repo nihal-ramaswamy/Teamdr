@@ -52,9 +52,18 @@ router.route('/:userId/portfolio')
     res.sendStatus(200);
 })
 .get(cors.whitelist, UserController.getUserPortfolio)
-.post(ErrorMiddleware.notSupported)
+.post(cors.whitelist, AuthMiddleware.verifyUser, UserController.reorderPortfolio)
 .put(ErrorMiddleware.notSupported)
 .delete(ErrorMiddleware.notSupported);
+
+router.route('/portfolio/:graphicalId')
+.options(cors.whitelist, (req, res) => {
+    res.sendStatus(200);
+})
+.get(ErrorMiddleware.notSupported)
+.post(ErrorMiddleware.notSupported)
+.put(cors.whitelist, AuthMiddleware.verifyUser, UserController.addGraphicalToPortfolio)
+.delete(cors.whitelist, AuthMiddleware.verifyUser, UserController.removeGraphicalFromPortfolio);
 
 router.route('/posts/filters')
 .options(cors.whitelist, (req, res) => {
@@ -64,3 +73,5 @@ router.route('/posts/filters')
 .post(cors.whitelist, AuthMiddleware.verifyUser, UserController.getFilteredPosts)
 .put(ErrorMiddleware.notSupported)
 .delete(ErrorMiddleware.notSupported);
+
+module.exports = router;

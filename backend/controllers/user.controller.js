@@ -1,5 +1,5 @@
 const UserService = require('../services/user.service');
-const Post = require('../services/post.service') // Remove all related, irrelevant
+//const Post = require('../services/post.service') // Remove all related, irrelevant
 
 exports.getUsers = async (req, res, next) => {
     try {
@@ -57,6 +57,36 @@ exports.getUserPortfolio = async (req, res, next) => {
     try {
         const user = await UserService.getUserPortfolio(req.params.userId);
         return res.status(200).json({ status: 200, data: user });
+    }   
+    catch (e) {
+        return res.status(e.status || 406).json({ status: e.status || 406, message: e.message });
+    }
+}
+
+exports.addGraphicalToPortfolio = async (req, res, next) => {
+    try {
+        await UserService.addGraphicalToPortfolio(req.user._id, req.params.graphicalId);
+        return res.status(200).json({ status: 200 });
+    }   
+    catch (e) {
+        return res.status(e.status || 406).json({ status: e.status || 406, message: e.message });
+    }
+}
+
+exports.removeGraphicalFromPortfolio = async (req, res, next) => {
+    try {
+        await UserService.removeGraphicalFromPortfolio(req.user._id, req.params.graphicalId);
+        return res.status(200).json({ status: 200 });
+    }   
+    catch (e) {
+        return res.status(e.status || 406).json({ status: e.status || 406, message: e.message });
+    }
+}
+
+exports.reorderPortfolio = async (req, res, next) => {
+    try {
+        await UserService.reorderPortfolio(req.user._id, req.body.graphicalIds);
+        return res.status(200).json({ status: 200 });
     }   
     catch (e) {
         return res.status(e.status || 406).json({ status: e.status || 406, message: e.message });

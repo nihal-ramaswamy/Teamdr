@@ -1,5 +1,5 @@
 const User = require("../models/user.model");
-const Post = require("../models/post.model"); // Remove all related, irrelevant
+//const Post = require("../models/post.model"); // Remove all related, irrelevant
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
@@ -25,10 +25,6 @@ exports.getUser = async (userId) => {
         await user.populate("graphicals").execPopulate();
         await user.populate('portfolio').execPopulate();
         
-        let userPosts = user.posts.slice().map((post) => post._id).reverse();
-        let userPreferences = user.preferences.slice().map((preference) => preference._id);
-        user.posts = userPosts;
-        user.preferences = userPreferences;
 
         return user;
     }
@@ -41,7 +37,6 @@ exports.getUserProfile = async (userId) => {
     const user = (await User.findById(userId));
     await user.populate("profileImage").execPopulate();
     await user.populate('portfolio').execPopulate();
-    let userPosts = user.posts.slice().map((post) => post._id).reverse();
 
     user.posts = userPosts;
 
@@ -75,7 +70,34 @@ exports.getUserPortfolio = async (userId) => {
     return user;
 }
 
-exports.getFilteredPosts = async (tagsSelected, categoriesSelected) => {
+exports.addGraphicalToPortfolio = async (userId, graphicalId) => {
+    try {
+        await User.findByIdAndUpdate(userId, { $addToSet: { "portfolio": graphicalId } });
+    }
+    catch (e) {
+        throw e;
+    }
+}
+
+exports.removeGraphicalfromPortfolio = async (userId, graphicalId) => {
+    try {
+        await User.findByIdAndUpdate(userId, { $pull: { "portfolio": graphicalId } });
+    }
+    catch (e) {
+        throw e;
+    }
+}
+
+exports.reorderPortfolio = async (userId, graphicalIds) => {
+    try {
+        await User.findByIdAndUpdate(userId, { $set: { "portfolio": graphicalIds } });
+    }
+    catch (e) {
+        throw e;
+    }
+}
+
+/*exports.getFilteredPosts = async (tagsSelected, categoriesSelected) => {
     try {
         let postIDs = []
         if (!tagsSelected.length && categoriesSelected.length) {
@@ -107,4 +129,4 @@ exports.getFilteredPosts = async (tagsSelected, categoriesSelected) => {
     catch (e) {
         throw e;
     }
-}
+}*/

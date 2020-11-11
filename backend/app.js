@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const path = require("path");
 const config = require("config");
 const passport = require("passport");
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const AuthRouter = require("./routes/auth.route");
 const UserRouter = require("./routes/user.route");
+const GraphicalRouter = require("./routes/graphical.route");
 
 // Configure app Preprocessors
 var app = express();
@@ -24,6 +24,7 @@ const appConfig = config.get("app");
 // Configure API Endpoints
 app.use("/api/auth", AuthRouter);
 app.use("/api/user", UserRouter);
+app.use("/api/graphical", GraphicalRouter);
 
 
 // Configuring MongoDB Connection

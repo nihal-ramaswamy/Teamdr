@@ -1,0 +1,264 @@
+.portfolio-carousel-container {
+    border: 5px solid black;
+    width : 85%;
+    background-color: palegoldenrod;
+    margin: 10px auto;
+}
+
+.portfolio-carousel-display-dropdown-ctnr {
+    width: 85%;
+    /* border: 1px solid black; */
+    margin: 0px auto;
+}
+
+/* FULLSCREEN CAROUSEL */ 
+.fullscreen-modal {
+    background-color: black;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.fullscreen-modal-slide {
+ 
+    background-color: black;
+    padding: 0px;
+    margin: 0px;
+}
+
+.portfolio-col-container {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.portfolio-area-headeings {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+
+}
+
+/* LEFT CSS */
+.portfolio-left-col {
+    width: 68%;
+    /* border: 2px solid black; */
+    padding: 7px;
+    padding-top: 10px;
+    border-radius: 10px;
+    background-color: #f2f4f5;
+    margin-bottom: 200px;
+}
+
+
+.portfolio-usr-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.portfolio-usr-btn-container > button {
+
+    margin-right: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(113, 173, 230);
+}
+
+#portfolio-cur-pics {
+    
+    margin-top: 10px;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 7px;
+    padding-bottom: 20px;
+    /* border: 2px solid black; */
+    /* border-bottom: 2px solid gray; */
+    background-color: #FFFFFF;
+}
+
+#portfolio-all-pics {
+
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 10px;
+    /* border:  1px solid blue; */
+    background-color: #FFFFFF
+}
+
+.portfolio-selector-area-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.portfolio-selector-area-header h3 {
+    margin: 10px 0px;
+}
+
+.portfolio-selector-area-header > button {
+
+    width: 40px;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    margin-right: 15px;
+}
+
+.portfolio-selector-area-header h3 {
+    margin-left: 10px;
+}
+
+/* CONTANIER FOR PICS */
+.portfolio-pic-container {
+
+    min-height: 250px;
+    /* max-height: 200px; */
+    /* overflow-y: scroll; */
+    padding: 15px 10px;
+    /* border: 1px solid red; */
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+}
+
+#portfolio-upload-btn {
+    padding: 10px 30px;
+    margin-left: 10px;
+}
+
+
+
+
+/* RIGHT CSS*/
+.portfolio-right-col {
+    
+    margin-top: 2px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.portfolio-btns {
+    padding: 10px 0px;
+    margin: 0px 0px 20px 0px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(113, 173, 230);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    
+
+}
+
+.portfolio-switch-container {
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.portfolio-switch-container h3 {
+    margin: auto 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    
+}
+
+.portfolio-switch-container > Switch {
+    margin: auto 0px;
+}
+
+.portfolio-add-del-btns {
+    background-color: #f2f4f5;
+    border: none;
+}
+
+.portfolio-add-del-btns:hover {
+    font-size: 1.6rem;
+}
+
+
+@media screen and (max-width:1024px) {
+
+    .portfolio-carousel-container {
+        width: 75%;
+    }
+
+    .portfolio-carousel-display-dropdown-ctnr {
+        width: 75%;
+    }
+    
+    .portfolio-col-container {
+        flex-direction: column-reverse;
+        width: 98%;
+    }
+
+    .portfolio-left-col {
+        width: 100%;
+    }
+
+
+    
+
+    .portfolio-usr-btn-container > button {
+        
+        margin-right: 10px;
+        padding: 5px 10px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(113, 173, 230);
+    }
+
+
+    .portfolio-right-col {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 10px;
+    }
+
+    .portfolio-btns {
+        width: 100%;
+        margin: 0px 7px;
+        
+    }
+
+    #portfolio-upload-btn {
+
+        width: auto;
+        padding: 7px 15px;
+    }
+
+    .portfolio-switch-container {
+
+    }
+
+    .portfolio-switch-container h3 {
+        
+        display: none;
+        justify-content: space-around;
+    }
+
+    #visible-toggle {
+
+        width: 100%;
+        margin: auto 0px;
+    }
+
+}
+
+
+@media screen and (max-width:700px) {
+    .portfolio-usr-btn-container {
+
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,247 @@
+body {
+  background-color: var(--light-bg-grey-color) !important;
+}
+
+.settings-page-container {
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 90%;
+  padding-bottom: 10px;
+  background-color: var(--light-bg-grey-color);
+}
+
+/* LEFT CSS */
+
+/* RIGHT CSS */
+.settings-right-col {
+  width: 100%;
+  padding: 10px;
+  padding-top: 0px;
+  border-radius: 15px;
+  height: 700px;
+  /* overflow-y: scroll; */
+  scroll-behavior: smooth;
+}
+
+.settings-right-col::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.settings-card-container {
+  margin-bottom: 20px;
+  /* height: 699px; */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  /* overflow-y: scroll; */
+}
+
+.settings-card-header {
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+  margin-bottom: 20px;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+/* PROFILE SETTING CSS */
+.account-settings-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.account-settings-header-left-col {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.account-settings-header-left-col img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.profile-pic-img-input {
+  background-color: #a7a7bd;
+  padding: 5px;
+  border-radius: 5px;
+  /* border: 1px solid violet; */
+}
+
+.profile-pic-btns {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 7px 0px;
+}
+
+.profile-pic-btns:hover {
+  box-shadow: 1px 2px 3px;
+}
+
+.account-settings-header-right-col {
+  width: 69%;
+  padding: 20px;
+  display: grid;
+}
+
+/* SECURITY CSS*/
+.one-form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  
+}
+
+.one-form-field label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.one-form-field-input {
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 20px;
+  min-width: 50%;
+  max-width: 70%;
+  background-color: var(--light-bg-grey-color);
+}
+
+.one-form-field-with-btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.one-form-field-with-btn-container input {
+  min-width: 50%;
+  width: 70%;
+}
+
+.show-password-btn {
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  text-align: justify;
+  font-size: x-large;
+}
+
+.settings-card-buttons-container {
+  margin-top: 50px;
+  bottom: 0px;
+  text-align: right;
+}
+
+.settings-card-buttons-container button {
+  margin: 0px 20px 0px 0px;
+  padding: 0px 10px;
+  height: 40px;
+  width: 130px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: none;
+}
+
+/* .settings-card-buttons-container , button:hover {
+  letter-spacing: 3px;
+} */
+
+.settings-revert-btn {
+  background-color: #5f71ef;
+  padding :13px 40px;
+  margin-right: 5px;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+
+  
+}
+
+.settings-update-btn {
+  background-color: #018afc;
+}
+
+/* HELP and SUPPORT */
+.suppor-request-textarea {
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 300px;
+  resize: none;
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .settings-page-container {
+    flex-direction: column;
+    margin-top: 2px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .settings-card-header {
+    text-align: center;
+  }
+
+  .settings-right-col {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .account-settings-header {
+    flex-direction: column;
+  }
+
+  .account-settings-header-left-col {
+    width: 100%;
+    align-items: center;
+  }
+
+  .account-settings-header-right-col {
+    width: 100%;
+    align-items: center;
+  }
+
+  .settings-card-container {
+    border-radius: 0px;
+  }
+
+  .one-form-field-input {
+    max-width: 100%;
+    min-width: 30%;
+  }
+
+  .one-form-field-with-btn-container button {
+    position: relative;
+  }
+
+  .one-form-field-with-btn-container input {
+    width: 100%;
+  }
+
+  .settings-card-buttons-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .settings-card-buttons-container button {
+    margin: 10px 0px;
+  }
+}
