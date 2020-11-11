@@ -1,0 +1,72 @@
+
+/* Admin Page Wide Classes */
+.admin-tabs-heading {
+    font-family: 'Prompt', sans-serif;
+}
+
+/* Entity Nav */
+.admin-scrollto-btns-ctnr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+
+}
+
+.admin-scrollto-btn {
+
+    background-color: var(--light-blue-bg-color);
+    padding: 10px 13px;
+    border: none;
+    border-radius: 7px;
+    margin-right: 13px;
+    font-family: 'Prompt', sans-serif;
+    color: white !important;
+}
+
+/* Entity Container */
+.admin-task-entity-ctnr {
+    border: 2px solid var(--post-border-color);
+    border-left: 5px solid var(--freelance-green);
+    padding : 10px 10px;
+    margin-bottom: 20px;
+    border-radius: 0px 10px 10px 0px ;
+    transition: border 300ms ease-out;
+}
+
+.admin-task-entity-ctnr:hover {
+    border-left: 5px solid var(--light-blue-bg-color);
+}
+
+.admin-task-entity-header {
+    font-family: 'Prompt', sans-serif;
+    font-size: large;
+    padding: 7px 0px;
+    border-bottom: 2px solid var(--post-border-color);
+}
+
+.admin-task-entity-desc {
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+}
+
+.run-entity-btn {
+    background-color: var(--light-blue-bg-color);
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    font-family: 'Prompt', sans-serif;
+    color: white !important;
+}
+
+
+
+/* PAGE SPECIFIC CSS*/
+.admin-page-container {
+    border-left: 7px solid var(--light-blue-bg-color);
+    padding: 13px;
+    margin-top: 5px;
+    margin: 5px;
+}

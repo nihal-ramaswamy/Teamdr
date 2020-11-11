@@ -1,0 +1,117 @@
+body{
+    background-color: #fafcfc;
+}
+
+
+.feed-super-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    border: 3px solid green;
+    margin: 0px auto;
+}
+
+
+/* LEFT */
+.preferences-container{
+
+    width: 25%;
+    border: 1px solid red;
+}
+
+.preferences-btn {
+    display: block;
+    border: none;
+    padding: 10px 13px;
+    text-transform: uppercase;
+    margin: 7px 0px;
+    font-family: 'Prompt', sans-serif;
+    border-radius: 7px;
+    width: 100%;
+}
+
+.preferences-btn-active {
+
+    display: block;
+    border: none;
+    padding: 10px 13px;
+    text-transform: uppercase;
+    margin: 7px 0px;
+    font-family: 'Prompt', sans-serif;
+    border-radius: 7px;
+    width: 100%;
+    border: 1px solid blue;
+
+}
+
+
+/* RIGHT */
+.home-page-container {
+
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    /* width: 80%; */
+    padding: 0px 10px;
+    /* border: 1px solid black; */
+}
+
+
+.preferences-filter {
+    font-family: 'Montserrat', sans-serif;
+    color: #555555;
+}
+
+.preferences-filter-dropdown {
+    font-size: 1.4rem;
+    color: #555555;
+    display:inline-block;
+    
+}
+
+.preferences-filter-dropdown-text {
+    font-family: 'Montserrat', sans-serif;
+    
+    color: #555555;
+    
+}
+
+.view-arrow-icon {
+    position: relative;
+    font-size: 2.3rem;
+    top: 1.3vmin;
+}
+
+.ant-dropdown-open {
+    width: 90%;
+}
+
+.preference-item-active {
+    background-color:#fafafa
+}
+
+.preference-button-active {
+    border-color: #1890ff;
+    color: #1890ff;
+}
+
+@media screen and (max-width:1024px) {
+    
+    .feed-super-container {
+        width: 100%;
+    }
+
+
+    .preferences-container {
+        width: 0px;
+    }
+    
+    
+    .home-page-container {
+        width: 100%;
+        padding: 0px;
+    }
+}
+

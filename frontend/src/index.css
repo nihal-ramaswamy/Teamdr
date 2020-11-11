@@ -1,13 +1,141 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+
+  --primary-color: #2b6ca3;
+  --primary-color-light: #008afc;
+  --primary-color-dark: #026abf;
+
+  --primary-color-light-1: #4b9ade;
+  --primary-color-light-2: #67baff;
+
+  --primary-text: #000000;
+  --primary-text-light: #272727;
+
+  --secondary-text: #ffffff;
+  --secondary-text-dark-1: #dee4e7;
+  --secondary-text-dark-2: #545454;
+
+  --primary-hover-text: #e8505b;
+  --secondary-hover-text: #bd529b;
+  --tertiary-hover-text: #cddff3;
+
+  --additional-hover-text-1: #a51616;
+  --aditional-hover-text-2: #ffffffcc;
+  --aditional-hover-text-3: rgba(223, 223, 223, 0.568);
+
+  /* ##############
+      FEED Colors
+  ############### */
+  --autopost-bg-color: #efefef;
+  --autopost-image-border-color: blue;
+  --autopost-bottom-link-color: #002e5d;
+
+  /* ############## 
+  Profile Colors 
+  #################*/
+  --image-text-color: whitesmoke;
+  --component-background-color:#dee4e7;
+  --edit-button-bg-color: #c7caca;
+  /* --btn-hover-bg-color :  */
+
+  /* 3 buttons */
+  --btn-bg-color: #e9e9e9;
+
+  /* Game Card */
+  --experience-bar-bg-color:#7de8ca;
+  --experience-bar-fill-color : #bada55; 
+
+  /* Achievement */
+  --achievement-card-bg-color:#545454;
+  --achievement-count-bg-color: #9dc4e7;
+
+  /* POST */
+  --post-button-color: #dee4e7;
+  --post-bg-color: #f6f8f9;
+
+  --post-discussion-msg-bg-color: #545454;
+  --post-discussion-msg-header-txt-color : #ffffff;
+
+
+  /* ############## 
+  Freelance Colors 
+  #################*/
+
+  --header-btn-color: #b9cfe7;
+  --analytics-bg-color: #eef1f3;
+  --freelance-components-bg-color: #e7ecee;
+  --freelance-status-task-bg-color: #c6cdd2;
+  --freelance-cur-proj-detail-btn-bg-color: #bfd3e8;
+
+
+  /* ####################
+  COLOR SET
+  ################ */
+  --darker-border-gray: #8998aa;
+  --light-grey-txt-color : #6c657b;
+
+
+  --light-bg-grey-color : #fafafa;
+  --light-blue-bg-color: #3898fd;
+
+  --profile-btns-grey: #e7e8e6;
+
+  --freelance-green: #61aa54;
+  --freelance-yellow : #fdd705;
+  --light-grey-border-for-post: #e8eaed;
+  --post-caption-txt-color: #65655e;
+  --post-readmore-color: #008afc;
+
+  --post-border-color : #e8eaed;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+padding: 10px 5px;
+background: #f1f1f1; 
+}
+
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap');
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+border-radius: 100px;
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+
+.my-spinner {
+margin: auto;
+margin-top: 40vh;
+width: 100%;
+height: 100%;
+
+/* SEMI BOLD Monstret */
+font-family: 'Montserrat', sans-serif;
+font-family: 'Prompt', sans-serif;
+}
+
+
+
+/* GLOBAL CSS */
+.GLOBAL-required-form-field-asterisk {
+  color: red;
+  font-family: 'Prompt', sans-serif;
+  margin-left: 2px;
+  font-size: 1rem;
 }

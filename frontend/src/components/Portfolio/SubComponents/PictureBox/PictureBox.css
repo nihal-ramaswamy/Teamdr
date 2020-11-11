@@ -1,0 +1,19 @@
+.btn-selector {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 20px;
+    width: 20px;
+    border: 1px solid chartreuse;
+    border-radius: 50%;
+    background-color: white;
+    cursor:pointer;
+}
+
+@media screen and (max-width:1024px) {
+    .btn-selector {
+        height: 15px;
+        width: 15px;
+        cursor:pointer;
+    }
+}
