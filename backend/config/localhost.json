@@ -1,0 +1,19 @@
+{
+    "isProd": false,
+    "app": {
+        "PORT": 4000,
+        "secretKey": "ThisIsADevSecret",
+        "whitelist": ["http://localhost:3000", "https://localhost:3443"]
+    },
+    "db": {
+        "mongoUrl": "mongodb://localhost/dbname"
+    },
+    "graphical": {
+        "base_url": "http://localhost:4000/images"
+    },
+    "s3": {
+        "AWSAccessKeyId": "",
+        "AWSSecretKey": "",
+        "bucketName": ""
+    }
+}
