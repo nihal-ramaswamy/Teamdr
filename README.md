@@ -1,6 +1,6 @@
 # WT-Project
 
-An app used to find teammates losely based on how tinder works made using MERN stack as a part of the Web Technologies course (UE19CS204) at PES University.
+An app used to find teammates loosely based on how tinder works made using MERN stack as a part of the Web Technologies course (UE19CS204) at PES University.
 
 ## Contents
 
