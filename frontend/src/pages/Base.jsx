@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { fetchUsers } from "../redux/actions/users";
 import * as userActions from "../redux/actions/user";
+import Tinder from './Tinder/App';
 
 import { Spin } from "antd";
 
@@ -40,6 +41,7 @@ const BaseComponent = () => {
           <Route exact path="/feed" component={HomePage} />
           <Route exact path="/settings" component={SettingsPage} />
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
+          <Route exact path="/find" component={Tinder} />
         </Switch>
       </BrowserRouter>
     </div>
