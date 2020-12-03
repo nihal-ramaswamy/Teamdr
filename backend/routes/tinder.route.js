@@ -9,12 +9,13 @@ const cors = require("../utils/cors.util");
 const AuthMiddleware = require('../middlewares/auth.middleware')
 const TinderController = require('../controllers/tinder.controller');
 
-router.route('/cards')
+router.route('/interests')
 .options(cors.whitelist, (req, res) => {
     res.sendStatus(200);
 })
-.get(cors.whitelist, AuthMiddleware.verifyUser, TinderController.getCards)
-.post(ErrorMiddleware.notSupported)
+.get(ErrorMiddleware.notSupported)
+.post(cors.whitelist, AuthMiddleware.verifyUser, TinderController.getUsersForInterests)
 .put(ErrorMiddleware.notSupported)
 .delete(ErrorMiddleware.notSupported);
 
+module.exports = router;
