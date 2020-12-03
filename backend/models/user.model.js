@@ -26,13 +26,24 @@ var User = new mongoose.Schema(
             default: false,
         },
 
-        isClient: {
-            type: Boolean,
-            default: false,
+        rating: {
+            type: Number,
+            default: 5,
         },
-        isApproved: {
-            type: Boolean,
-            default: false,
+
+        phoneNumber: {
+            type: String,
+            default: null,
+        },
+
+        github: {
+            type: String,
+            default: null,
+        },
+
+        linkedin: {
+            type: String,
+            default: null,
         },
 
         portfolio: [

@@ -5,10 +5,9 @@ import BaseComponent from './Base';
 
 const store = configureStore();
 
-class App extends Component {
+const App = () => {
 
-  
-  render() {
+
     return (
       <div>
         <Provider store={store}>
@@ -16,7 +15,6 @@ class App extends Component {
         </Provider>
       </div>
     );
-  }
-}
 
+}
 export default App;

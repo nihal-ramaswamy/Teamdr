@@ -22,6 +22,7 @@ import SettingsPage from "./Settings/Settings";
 const BaseComponent = () => {   
   const user = useSelector((state) => state.user);
   const userList = useSelector((state) => state.users.listOfUsers);
+  console.log(userList);
 
   const dispatch = useDispatch();
 
