@@ -1,7 +1,7 @@
 import {
     HomeTwoTone,
     LoginOutlined,
-    LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileTwoTone,
+    LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileTwoTone, SearchOutlined,
     SettingTwoTone
 } from "@ant-design/icons";
 import { Button, Drawer, Input, Layout, List } from "antd";
@@ -77,6 +77,9 @@ const DesktopNav = (props) => {
                     size='sm'/>   
                 {user.isAuthenticated ? (
                     <div className="navbar-desktop-right">
+                        <Link to="/find">
+                            <SearchOutlined className="navbar-desktop-link" />
+                        </Link>
                         <Link to="/feed">
                             <HomeTwoTone className="navbar-desktop-link" />
                         </Link>
