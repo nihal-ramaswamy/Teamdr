@@ -6,20 +6,25 @@ async function asyncForEach(array, callback) {
     }
   }
 
-exports.getUser = async (userIds) => {
+exports.getUsersForInterests = async (Interests) => {
+    
     try {
-        cards = [];
-        asyncForEach(userIds, (userId) => {
-            const user = (await User.findById(userId));
-            await user.populate("profileImage").execPopulate();
-            await user.populate("phoneNumber").execPopulate();
-            await user.populate("github").execPopulate();
-            await user.populate("linkedin").execPopulate();
-            cards.push(user);
-        })
-        return cards;
+        let users = [];
+        if (Interests.length) {
+            const interests = []
+            Interests.forEach((Interest)=>{interests.push(Interest.name)});
+            console.log(interests)
+            users = await User.find({interests: {"$all":[...interests]}});
+            console.log(interests, users)
+        }
+        else {
+            users = await User.find({}); 
+        }
+        console.log(users, Interests);
+        return users;
     }
     catch (e) {
+        console.log(e);
         throw e;
     }
-}
+} 

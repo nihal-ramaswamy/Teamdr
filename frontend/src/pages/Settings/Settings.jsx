@@ -1,6 +1,6 @@
 import { notification, Spin } from "antd";
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
@@ -8,7 +8,12 @@ import getConfig from "../../helpers/getConfig";
 import { deleteImage, uploadFile } from "../../helpers/image";
 import { updateUserSettings } from "../../redux/actions/user";
 import { BASE_URL, DEFAULT_PROFILE_PIC_URL } from "../../shared/config";
+import ReactTags from 'react-tag-autocomplete';
+import { Col, Row } from 'antd';
+import _ from 'lodash';
 import "./Settings.css";
+
+const MAX_TAGS = 12;
 
 const SettingsPage = () => {
   // Getting user data
@@ -34,13 +39,53 @@ const SettingsPage = () => {
   let [oldPassword, changeOldPswd] = useState("");
   let [newPassword, changeNewPswd] = useState("");
   let [confirmNewPassword, changeConfirmPswd] = useState("");
+  const [Interests, updateInterests] = useState([]);
+
+  // INTERESTS
+  const [isInterestsFormDisabled, toggleInterestsFormDisabled] = useState(false);
+
+  const onDelete = (id) => {
+    let copyOfInterests = Interests.slice();
+    _.remove(copyOfInterests, (interest) => {
+        return interest.id == id;
+    });
+    copyOfInterests.forEach((interest, id) => interest.id = id);
+    updateInterests([...copyOfInterests]);
+  }
+
+    const onAddition = (tagName) => {
 
 
+          const interest = {
+              id: Interests.length,
+              name: tagName.name,
+          }
+          updateInterests([...Interests, interest]);
+  }
+
+    const toggleInterestsForm = (shouldInterestsFormBeDisabled) => {
+      interestsRef.current.input.current.input.current.disabled = shouldInterestsFormBeDisabled;
+      toggleInterestsFormDisabled(shouldInterestsFormBeDisabled);
+    }
+
+    useEffect(() => {
+      if (Interests.length == MAX_TAGS) {
+          toggleInterestsForm(true);
+      }
+      else if (Interests.length == MAX_TAGS -1) {
+          toggleInterestsForm(false);
+      }
+    }, [Interests])
+
+  // REFS
     let firstNameHTMLele = useRef(null);
     let lastNameHTMLele = useRef(null);
     let userNameHTMLele = useRef(null);
-    let userDesignationHTMLele = useRef(null);
+    let userGitHubHTMLele = useRef(null);
+    let userLinkedInHTMLele = useRef(null);
+    let userBioHTMLele = useRef(null);
     let emailHTMLele = useRef(null);
+    let interestsRef = useRef(null);
 
   const onOldPswdChange = (e) => {
     changeOldPswd(e.target.value);
@@ -120,19 +165,23 @@ const SettingsPage = () => {
 
   const handleAccountSettingsUpdate = () => {
 
-    if(firstNameHTMLele.current.value === "" || userNameHTMLele.current.value === "" || lastNameHTMLele.current.value === "" || userDesignationHTMLele.current.value === "" || emailHTMLele.current.value === "" )
+    if(firstNameHTMLele.current.value === "" || userNameHTMLele.current.value === "" || lastNameHTMLele.current.value === "" || userGitHubHTMLele.current.value === "" || emailHTMLele.current.value === "" )
     {
       openNotificationWithIcon('warning', "All fields are required");
       return;
     }
-
+    const interests = []
+    Interests.forEach((Interest)=>{interests.push(Interest.name)});
     const obj = {
       "name": firstNameHTMLele.current.value + "_" + lastNameHTMLele.current.value,
       "username": userNameHTMLele.current.value,
-      "designation": userDesignationHTMLele.current.value,
-      "email": emailHTMLele.current.value
+      "github": userGitHubHTMLele.current.value,
+      "linkedin": userLinkedInHTMLele.current.value,
+      "email": emailHTMLele.current.value,
+      "bio": userBioHTMLele.current.value,
+      "interests": [...user.data.interests, ...interests]
     };
-
+    console.log(obj)
     dispatch(updateUserSettings(obj));
 
     // Notification
@@ -244,19 +293,60 @@ const SettingsPage = () => {
                       defaultValue={user.data.email}
                     />
                   </div>
-
+                  
                   <div className="one-form-field">
-                    <label>Designation</label>
+                    <label>GitHub</label>
 
                     <input
-                      id="user-designation"
+                      id="user-github"
                       className="one-form-field-input"
-                      maxLength="20"
-                      ref={userDesignationHTMLele}
-                      defaultValue={user.data.designation}
+                      ref={userGitHubHTMLele}
+                      defaultValue={user.data.github}
                       required
                     />
                   </div>
+
+                  <div className="one-form-field">
+                    <label>LinkedIn</label>
+
+                    <input
+                      id="user-linkedin"
+                      className="one-form-field-input"
+                      ref={userLinkedInHTMLele}
+                      defaultValue={user.data.linkedin}
+                      required
+                    />
+                  </div>
+
+                  <div className="one-form-field">
+                    <label>Bio</label>
+
+                    <input
+                      id="user-bio"
+                      className="one-form-field-input"
+                      maxLength="200"
+                      ref={userBioHTMLele}
+                      defaultValue={user.data.linkedin}
+                      required
+                    />
+                  </div>
+
+                  <div className="one-form-field">
+                    <label>Interests</label>
+                    
+                      <ReactTags
+                        ref={interestsRef}
+                        tags={Interests}
+                        onDelete={(id) => onDelete(id)}
+                        onAddition={(tagName) => onAddition(tagName)}
+                        allowNew
+                        autoresize
+                        placeholderText={isInterestsFormDisabled? null:'Add an interest'} />
+                  </div>
+
+
+                 
+                  
                 </div>
               </div>
 

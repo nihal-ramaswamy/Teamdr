@@ -10,7 +10,7 @@ The workflow used is route-controller-service; All requests are handled via this
 2. Ensure you have nodeJS, npm and mongod installed.
 3. Run `npm install` to fetch and install all the necessary packages
 4. Run `npm run dev` to run the API server. The default port used is 4000, i.e `http://localhost:4000/`
-5. On another terminal, run `mongod` to set up the database server.
+5. On another terminal, run `mongod` to set up the database server or you can use mongo atlas. If you use mongo atlas, you can skip running `mongod`.
 
 ## Contributing
 

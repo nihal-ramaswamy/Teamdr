@@ -92,7 +92,7 @@ const RegisterModal = (props) => {
                 <Row justify="left" >
                     <Col>
                         <p className="auth-modal-auth-title">
-                            SIGN UP AS A {props.modalMode === 2 ? 'MEMBER' : 'CLIENT'}
+                            SIGN UP
                         </p>
                         <p className="auth-modal-auth-sub">
                             {
@@ -153,7 +153,7 @@ const RegisterModal = (props) => {
                 <Row justify="left" >
                     <Col>
                         <p className="auth-modal-auth-title">
-                            SIGN UP AS A {props.modalMode === 2 ? 'MEMBER' : 'CLIENT'}
+                            SIGN UP
                         </p>
                         <p className="auth-modal-auth-sub">
                             {

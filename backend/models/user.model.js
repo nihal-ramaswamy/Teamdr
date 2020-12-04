@@ -46,6 +46,13 @@ var User = new mongoose.Schema(
             default: null,
         },
 
+        interests: [ 
+            {
+                type: String,
+                default: null,
+            }
+        ],
+
         portfolio: [
             {
                 type: mongoose.Schema.Types.ObjectId,

@@ -26,7 +26,7 @@ const appConfig = config.get("app");
 app.use("/api/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/graphical", GraphicalRouter);
-app.use("/tinder", Tinder);
+app.use("/api/tinder", Tinder);
 
 // Configuring MongoDB Connection
 const dbConfig = config.get("db");

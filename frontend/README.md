@@ -1,4 +1,4 @@
-# Teamder
+# Teamder Frontend
 
 # Development
 The webapp is written in Javascript and uses ReactJS (Hooks), along with Redux-Thunk, Router, and a couple of other things.
