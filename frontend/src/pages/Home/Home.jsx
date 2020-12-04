@@ -1,73 +1,61 @@
-import { Spin, Dropdown, Menu, Button } from 'antd';
-import React, { useEffect, useState } from "react";
-import handleViewport from 'react-in-viewport';
-import { useDispatch, useSelector } from "react-redux";
-import AuthModal from "../../components/Modal/Modal.jsx";
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Row, Col } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
-import './Home.css';
-//import { getFilteredPostIDs } from '../../redux/actions/filters.js';
-
-const HomePage = () => {
-    
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
-    
-    const [isModalOpen, toggleModalOpen] = useState(false);
-    const [hasLoaded, setLoaded] = useState(false);
+import React, { useRef, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import _ from 'lodash';
+import "./Home.css";
+import InfoModal from './InfoModal';
+import InfoIcon from '@material-ui/icons/Info';
 
 
+function App() {
+    let [value, setValue] = useState("");
+	const userList = useSelector((state) => state.users.listOfUsers);
+	const [cardUsers, setCards] = useState([]);
+	useEffect(() => {
+		setCards(userList);
+		console.log(userList);
+	}, [userList]);
 
-    const [categoryFilters, setCategoryFilters] = useState([]);
-    const [tagFilters, setTagFilters] = useState([]);
+    const [showInfoModal, setShowInfoModal] = useState(false);
+    const [userInFocus, setUserInFocus] = useState(null);
 
-    const [initialViewportBlock, setInitialViewportBlock] = useState(false);
-    const [isFetching, setIsFetching] = useState(false);
- 
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        if (user.isLoading == false) {
-            setLoaded(true);
-        }
-        else if (!user.data) {
-            setLoaded(false);
-        }
-        else if (user.data) {
-            setLoaded(true);
-        }
-    }, [user]);
-
-        
-    const toggleModal = () => {
-        toggleModalOpen(!isModalOpen);
-    }
-    const closeModal = () => {
-        toggleModalOpen(false);
+    const debugFunc = () => {
+        console.log(cardUsers);
     }
 
+    const showUserInfo = () => {
+        var userListArray = [];
+        for (let i = 0; i < cardUsers.length; ++i) {
+            if (cardUsers[i].name.indexOf(value) == 0)
+            {userListArray.push(
+                <div>
+                    <h3>
+                        Name: {cardUsers[i].name}
+                    </h3>
+                    <InfoIcon 
+                        onClick={()=>{
+                        setUserInFocus(cardUsers[i]);
+                        setShowInfoModal(true)}}
+                    />
+                </div>
+            )}
+        }
+        return userListArray;
+    }
 
+    const handleValue = (event) => {
+        setValue(event.target.value);
+    }
 
-
-
-    return (
-        <div>
-            {hasLoaded && <div className="home-page-container">
-                <Row>
-                </Row>
-                <AuthModal toggleModal={closeModal} isModalOpen={isModalOpen} />
-            </div>}
-            {isFetching &&
-                <>
-                    <Spin size="large" className="my-spinner" />
-                        <p style={{ textAlign: "center" }}>
-                            Loading, please wait.
-                        </p>
-                </>
-            }
-        </div>
-    );
+	return (
+		<>
+        <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus} />
+        <input type = "text" className = "input" placeholder = "Search User" onChange = {(e) => handleValue(e)}/>
+        <h1>Other users</h1>
+		{cardUsers.length && <div className="app">
+            {showUserInfo()}
+        </div>}
+		</>
+	);
 }
 
-export default HomePage;
+export default App;
