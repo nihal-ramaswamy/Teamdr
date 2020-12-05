@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import _ from 'lodash';
 import "./App.css";
-import TinderCards from "./TinderCards";
+import TeamderCards from "./TeamderCards";
 import SwipeButtons from "./SwipeButtons";
 import ReactTags from 'react-tag-autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
@@ -55,7 +55,7 @@ function App() {
 	}, [Interests])
 
 	const submitSearch = async () => {
-		const filteredUsers = await axios.post(`${BASE_URL}/api/tinder/interests`, {
+		const filteredUsers = await axios.post(`${BASE_URL}/api/teamder/interests`, {
 				Interests: Interests,
 			},
 			getConfig()
@@ -78,7 +78,7 @@ function App() {
 		</div>
 		<SearchIcon onClick={()=> submitSearch()}/>
 		{cardUsers.length && <div className="app">
-			<TinderCards userList={cardUsers}/>
+			<TeamderCards userList={cardUsers}/>
 			<SwipeButtons />
 		</div>}
 		</>
