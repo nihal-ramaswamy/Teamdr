@@ -38,7 +38,6 @@ exports.getUserProfile = async (userId) => {
     await user.populate("profileImage").execPopulate();
     await user.populate('portfolio').execPopulate();
 
-    user.posts = userPosts;
 
     return user;
 }

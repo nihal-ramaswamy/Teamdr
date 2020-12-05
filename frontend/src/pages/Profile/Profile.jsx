@@ -66,7 +66,6 @@ const ProfileImageContainer = styled.div`
 
 
 const UserProfileComponent = ({ match }) => {
-
 	const dispatch = useDispatch();
 	
 	// States for user data
@@ -87,6 +86,7 @@ const UserProfileComponent = ({ match }) => {
 			axios
 				.get(`${BASE_URL}/api/user/${userData._id}`, getConfig())
 				.then((res) => {
+					console.log(res);
 					if (user == null || res.data.data._id != user._id)
 						modifyUser(res.data.data);
 				});

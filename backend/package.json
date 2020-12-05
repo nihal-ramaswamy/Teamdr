@@ -11,7 +11,7 @@
     "engines": {
         "node": "12.0.0"
     },
-    "author": "laruim",
+    "author": "Murali Krishna",
     "license": "ISC",
     "dependencies": {
         "aws-sdk": "^2.737.0",

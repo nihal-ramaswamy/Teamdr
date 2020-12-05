@@ -27,7 +27,7 @@ router.route('/swipe')
 .put(ErrorMiddleware.notSupported)
 .delete(ErrorMiddleware.notSupported);
 
-router.route('/react')
+router.route('/reaction')
 .options(cors.whitelist, (req, res) => {
     res.sendStatus(200);
 })
