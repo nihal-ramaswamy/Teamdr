@@ -9,6 +9,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
 import axios from "axios";
+import { Row, Col } from "antd";
 
 function Teams() {
     let [value, setValue] = useState("");
@@ -33,13 +34,37 @@ function Teams() {
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [userInFocus, setUserInFocus] = useState(null);
 
+    const teammatesRef = useRef(null);
+    const requestsRef = useRef(null);
+
+    const [curSection, changeCurSection] = useState("teammates");
+
+    const setCurSection = (sectionName) => {
+		if (curSection === "teammates") {
+			teammatesRef.current.className = "user-profile-nav-btn";
+        }
+        else if (curSection === "requests") {
+			requestsRef.current.className = "user-profile-nav-btn";
+        }
+
+		changeCurSection(sectionName);
+
+		if (sectionName === "teammates") {
+			teammatesRef.current.className = "user-profile-nav-btn user-profile-nav-active";
+        }
+        else if (sectionName === "requests") {
+			requestsRef.current.className = "user-profile-nav-btn user-profile-nav-active";
+        }
+	};
+
     const ReactToRequest = async (reaction, reactee) => {
-        const response = await axios.post(`${BASE_URL}/api/teamder/react`, {
+        const response = await axios.post(`${BASE_URL}/api/teamder/reaction`, {
             id: reactee,
             reaction: reaction,
           },
           getConfig()
         )
+        window.location.reload();
     }
 
     const debugFunc = () => {
@@ -47,36 +72,68 @@ function Teams() {
     }
 
 	return currentUser.data && (
-		<>
+		<div className="user-profile-container">
+            <div className="user-profile-nav-container">
+                <button
+                    ref={teammatesRef}
+                    onClick={() => setCurSection("teammates")}
+                    className="user-profile-nav-btn"
+                    style={{cursor:'pointer'}}
+                >
+                    <div className="show-for-web"> Previous and current Teammates </div>
+                </button>
+                <button
+                    ref={requestsRef}
+                    onClick={() => setCurSection("requests")}
+                    className="user-profile-nav-btn"
+                    style={{cursor:'pointer'}}
+                >
+                    <div className="show-for-web"> Team Requests </div>
+                </button>
+            </div>
         <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus} />
-        <h1>Team Requests</h1>
-        {currentUser.data.teamRequests.map((requester) => {
-            return (<>
-                    <h3>{userList.find(user => user._id == requester).name}</h3>
-                    <InfoIcon 
-                        onClick={()=>{
-                        setUserInFocus(userList.find(user => user._id == requester));
-                        setShowInfoModal(true)}}
-                    />
-                    <CheckBoxIcon onClick={()=>ReactToRequest('yes', requester)}/>
-                    <CancelIcon onClick={()=>ReactToRequest('no', requester)}/>
-            </>
+        {curSection == "requests" && currentUser.data.teamRequests.map((requester) => {
+            const shownUser = userList.find(user => user._id == requester);
+            return (<Row>
+                        <Col span={1}>
+                            <InfoIcon 
+                                onClick={()=>{
+                                setUserInFocus(userList.find(user => user._id == requester));
+                                setShowInfoModal(true)}}
+                                style={{cursor:'pointer'}}
+                            />
+                        </Col>
+                        <Col span={3}>
+                            <a href={`/profile/${shownUser.username}`}>{shownUser.name}</a>
+                        </Col>
+                        <Col span={1}>
+                            <CheckBoxIcon style={{cursor:'pointer'}} onClick={()=>ReactToRequest('yes', requester)}/>
+                        </Col>
+                        <Col span={1}>
+                            <CancelIcon style={{cursor:'pointer'}} onClick={()=>ReactToRequest('no', requester)}/>
+                        </Col>
+                    </Row>
             )
         })}
-        <h1>Previous and current Teammates</h1>
-        {currentUser.data.matched.map((matchedUser) => {
+        {curSection == "teammates" && currentUser.data.matched.map((matchedUser) => {
+            const shownUser = userList.find(user => user._id == matchedUser)
             return (
-                <>
-                    <h3>{userList.find(user => user._id == matchedUser).name}</h3>
-                    <InfoIcon 
-                    onClick={()=>{
-                    setUserInFocus(userList.find(user => user._id == matchedUser));
-                    setShowInfoModal(true)}}
-                    />
-                </>
+                <Row>
+                    <Col span={1}>
+                        <InfoIcon 
+                        onClick={()=>{
+                        setUserInFocus(userList.find(user => user._id == matchedUser));
+                        setShowInfoModal(true)}}
+                        style={{cursor:'pointer'}}
+                        />
+                    </Col>
+                    <Col>
+                        <a href={`/profile/${shownUser.username}`}>{shownUser.name}</a>
+                    </Col>
+                </Row>
             )
         })}
-		</>
+		</div>
 	);
 }
 

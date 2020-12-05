@@ -40,7 +40,9 @@ function TeamderCards(props) {
   return !currentUser.isLoading && (<div className="teamderCards">
       <div className="teamderCards__cardContainer">
         {userList.filter((user) => user._id != currentId).filter((user) => !currentUser.data.swipedLeftOn.includes(user._id))
-                  .filter((user) => !currentUser.data.swipedRightOn.includes(user._id)).map(user => {
+                  .filter((user) => !currentUser.data.swipedRightOn.includes(user._id))
+                  .filter((user) => !currentUser.data.matched.includes(user._id))
+                  .map(user => {
                     let location = "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
                     if (user.profileImage) {
                       location = user.profileImage.location
@@ -53,7 +55,8 @@ function TeamderCards(props) {
                         <div style={{ backgroundImage: `url(${location})`}} className="card">
                             <InfoIcon onClick={()=>{
                               setUserInFocus(user);
-                              setShowInfoModal(true)}}/>
+                              setShowInfoModal(true)}}
+                              style={{cursor:'pointer'}}/>
                             <h3>{user.name}</h3>
                         </div>
                       </TeamderCard>

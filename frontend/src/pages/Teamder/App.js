@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
+import { Row, Col } from "antd";
 
 const MAX_TAGS = 12;
 
@@ -66,18 +67,24 @@ function App() {
 
 	return (
 		<>
-		<div>
-		<ReactTags
-			ref={interestsRef}
-			tags={Interests}
-			onDelete={(id) => onDelete(id)}
-			onAddition={(tagName) => onAddition(tagName)}
-			allowNew
-			autoresize
-			placeholderText={isInterestsFormDisabled? null:'Add an interest'} />
-		</div>
-		<SearchIcon onClick={()=> submitSearch()}/>
-		{cardUsers.length && <div className="app">
+		<Row style={{marginTop:"5vmin"}}>
+			<Col>
+				<ReactTags
+					inline
+					ref={interestsRef}
+					tags={Interests}
+					onDelete={(id) => onDelete(id)}
+					onAddition={(tagName) => onAddition(tagName)}
+					allowNew
+					autoresize
+					placeholderText={isInterestsFormDisabled? null:'Add an interest to filter by'} />
+				
+			</Col>
+			<Col>
+				<SearchIcon style={{marginLeft:"1vmin", marginTop:"1vmin", cursor:'pointer'}} onClick={()=> submitSearch()}/>
+			</Col>
+		</Row>
+		{cardUsers.length > 0 && <div className="app">
 			<TeamderCards userList={cardUsers}/>
 			<SwipeButtons />
 		</div>}

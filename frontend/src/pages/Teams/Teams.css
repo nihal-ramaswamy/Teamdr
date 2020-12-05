@@ -101,3 +101,296 @@ body {
 		padding: 0px;
 	}
 }
+
+.user-profile-container {
+	width: 60%;
+	padding-top: 10vmin;
+	margin: 0px auto;
+	/* border: 2px solid black; */
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .user-profile-cover-img-txt {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 2em;
+	color: var(--image-text-color);
+	font-family: "Prompt", sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+  }
+  
+  /* GAME CARD AREA */
+  
+  .user-profile-datacard-container {
+	position: relative;
+	top: -9.6vmin;
+	text-align: center;
+	padding: 10px;
+	color: black;
+  }
+  
+  .user-profile-center-data {
+	margin: 0px auto;
+  }
+  
+  .user-profile-name-ctnr {
+	font-family: "Prompt", sans-serif;
+	font-size: 1.7rem;
+  }
+  
+  .user-profile-usernamename-ctnr {
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
+  }
+  
+  .user-profile-designation-ctnr {
+	font-family: "Prompt", sans-serif;
+	font-size: 1.4rem;
+  }
+  
+  .user-profile-level-ctnr {
+	font-family: "Prompt", sans-serif;
+	font-size: 1.4rem;
+  }
+  
+  .level-progress-outer-container {
+	width: 40%;
+	margin: 5px auto;
+	background-color: #7de8ca;
+	margin-top: 13px;
+  }
+  
+  /* 3 Button Set */
+  .user-profile-buttons-container{
+	  width: 60%;
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: space-between;
+	  margin: 5px auto;
+	  position: relative;
+	  top: -9vmin;
+  }
+  
+  .user-profile-btn {
+	  width: 32%;
+	  padding: 1vmin 1.3874vmin;
+	  color: black;
+	  background-color: var(--profile-btns-grey);
+	  border: none;
+	  font-family: 'Montserrat', sans-serif;
+	  border-radius: 7px;
+	  font-size: 1.1rem;
+	  font-weight: bold;
+  }
+  .user-profile-btn:hover {
+	color: white;
+	background-color: var(--light-blue-bg-color);
+  }
+  
+  /* Navigation */
+  .show-for-web {
+	display: block;
+  }
+  
+  .show-for-mob {
+	display: none;
+  }
+  
+  .user-profile-nav-container{
+	  position: relative;
+	  top: -9.6vmin;
+	  width: 100%;
+	  border-top: 1px solid #909090;
+	  margin-top: 5.336vmin;
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: space-between;
+  }
+  
+  .user-profile-nav-btn {
+	  background-color: var(--light-bg-grey-color);
+	  width: 32%;
+	  border:none;
+	  padding: 1.3874vmin 0px;
+	  font-size: 1rem;
+	  font-family: 'Montserrat', sans-serif;
+  }
+  
+  .user-profile-nav-btn:focus {
+	outline:none;
+  }
+  
+  .user-profile-nav-btn:hover {
+	  color: black;
+  }
+  
+  
+  .user-profile-nav-active {
+	  color: black;
+	  border:none;
+	  border-top: 1px solid black;
+  }
+  
+  /* POST */
+  .user-profile-post-dropdown {
+	background-color: var(--profile-btns-grey);
+	color: black;
+	padding: 1.3874vmin 40px;
+	position: relative;
+	top: -4.2vmin;
+	margin: 0px;
+	border-radius: 7px;
+  
+  }
+  
+  .post-view-btn-stuff{
+	font-size: 1.75vmin;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+  }
+  
+  .user-profile-sequential-post-container {
+	scroll-behavior: smooth;
+  }
+  
+  .user-profile-gridpost-container {
+	  display: grid;
+	  grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .react-video-my-custom-class {
+	margin: auto 0px;
+  }
+  
+  /* Achievements */
+  .user-profile-achievements-ctnr {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .add-achievements-btn {
+  
+	width: 100%;
+	padding: 1.3874vmin;
+	background-color: white;
+	border: none;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	background-color: var(--light-blue-bg-color);
+	color: white;
+	font-family: 'Prompt', sans-serif;
+  }
+  
+  
+  /* PORTFOLIO */
+  
+  
+  /* BULLETIN */
+  
+  
+  @media screen and (max-width: 1025px) {
+	.user-profile-container {
+	  width: 100%;
+	}
+  
+	/* Data card */
+	.user-profile-datacard-container {
+	  top: -13.336vmin;
+	}
+  
+	.user-profile-name-ctnr {
+	  font-size: 1.7rem;
+	}
+  
+	.user-profile-usernamename-ctnr {
+	  font-size: 1rem;
+	}
+  
+	.user-profile-designation-ctnr {
+	  font-size: 1.4rem;
+	}
+  
+	.user-profile-level-ctnr {
+	  font-size: 1.4rem;
+	}
+  
+	.level-progress-outer-container {
+	  width: 80%;
+	}
+  
+	/* 3 button set */
+	.user-profile-buttons-container {
+		width: 96%;
+		padding-right: 2px;
+		padding-left: 2px;
+		top: -12.336vmin;
+	}
+  
+  
+	.user-profile-btn {
+		padding: 7px;
+		font-size: 0.7rem;
+	  }
+  
+	/*Navigation */
+	.show-for-web {
+	  display: none;
+	}
+	
+	.show-for-mob {
+	  display: block;
+	  font-size: 1.1rem;
+	}
+  
+	.show-for-mob-post-icon {
+	  font-size: 1.3rem;
+	}
+  
+	.user-profile-nav-container {
+		top: -10.336vmin;
+		margin-top: 20px;
+	}
+  
+	.user-profile-nav-btn{
+		font-size: 0.7rem;
+		padding: 7px 0px;
+	}
+  
+	/*Posts*/
+	.user-profile-post-dropdown {
+	  top: -20px;
+	  padding: 7px 20px;
+	  margin-left: 10px;
+	  font-size: 1rem;
+	}
+  
+	.post-view-btn-stuff{
+	  font-size: 0.7rem;
+	  font-weight: 800;
+	  font-family: 'Montserrat', sans-serif;
+	}
+  
+	.view-arrow-icon {
+	  font-size: 1.3rem;
+  
+	}
+  
+	.user-profile-gridpost-container {
+	  position: relative;
+	  top: -11px;
+	}
+  
+  
+	/* Achievements */
+	.add-achievements-btn {
+	  width: 98%;
+	  margin: 0px auto;
+	  margin-bottom: 5px;
+	}
+  }

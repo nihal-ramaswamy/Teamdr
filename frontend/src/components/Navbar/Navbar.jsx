@@ -80,7 +80,7 @@ const DesktopNav = (props) => {
                         <Link to="/find">
                             <SearchOutlined className="navbar-desktop-link" />
                         </Link>
-                        <Link to="/feed">
+                        <Link to="/teams">
                             <HomeTwoTone className="navbar-desktop-link" />
                         </Link>
                         <Link to="/profile">
@@ -100,7 +100,7 @@ const DesktopNav = (props) => {
                                 className="navbar-desktop-link"
                                 onClick={()=>{
                                     dispatch(logoutUser());
-                                    if (window.location.pathname == '/' || window.location.pathname == '/feed') {
+                                    if (window.location.pathname == '/' || window.location.pathname == '/teams') {
                                         window.location.reload();
                                     } // This is a somewhat dirty method of doing this
                                     return <Redirect to='/'/>;
@@ -198,7 +198,7 @@ const MobileNav = (props) => {
                             <List>
                                 <List.Item>
                                     <Link
-                                        to="/feed"
+                                        to="/teams"
                                         className="navbar-mobile-drawer-link"
                                         onClick={toggleNav}
                                     >
@@ -298,7 +298,7 @@ export default Navbar;
         className="navbar-desktop-link"
         onClick={()=>{
             dispatch(logoutUser());
-            if (window.location.pathname == '/' || window.location.pathname == '/feed') {
+            if (window.location.pathname == '/' || window.location.pathname == '/teams') {
                 window.location.reload();
             } // This is a somewhat dirty method of doing this
             return <Redirect to='/'/>;
