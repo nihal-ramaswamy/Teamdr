@@ -9,7 +9,7 @@ const logger = require("morgan");
 const AuthRouter = require("./routes/auth.route");
 const UserRouter = require("./routes/user.route");
 const GraphicalRouter = require("./routes/graphical.route");
-const Tinder = require("./routes/tinder.route");
+const Teamder = require("./routes/teamder.route");
 
 // Configure app Preprocessors
 var app = express();
@@ -26,7 +26,7 @@ const appConfig = config.get("app");
 app.use("/api/auth", AuthRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/graphical", GraphicalRouter);
-app.use("/api/tinder", Tinder);
+app.use("/api/teamder", Teamder);
 
 // Configuring MongoDB Connection
 const dbConfig = config.get("db");

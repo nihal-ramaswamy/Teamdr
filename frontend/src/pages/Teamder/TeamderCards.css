@@ -11,7 +11,7 @@
   background-position: center;
 }
 
-.tinderCards__cardContainer{
+.teamderCards__cardContainer{
   display: flex;
   justify-content: center;
   margin-top: 10vh;
@@ -21,7 +21,7 @@
   position: absolute;
 }
 
-.tinderCards{
+.teamderCards{
   width: 100%;
   height: 100%;
 }
