@@ -16,6 +16,7 @@ import { logoutUser } from "../../redux/actions/user";
 import { DEFAULT_PROFILE_PIC_URL } from "../../shared/config";
 import AuthModal from "../Modal/Modal.jsx";
 import "./Navbar.css";
+import 'materialize-css';
 
 const { Header } = Layout;
 
@@ -69,22 +70,21 @@ const DesktopNav = (props) => {
                 <Link className="navbar-desktop-left" to="/">
                     <img src='assets/logo.png'></img>
                 </Link>
-                <Input 
-                    style={{borderRadius:'10vmin 10vmin'}} 
+                <h1 
+                    style={{borderRadius:'10vmin 10vmin', fontWeight: 'bolder', color: '#183d70'
+                }} 
                     className='navbar-desktop-search-bar'
-                    type='search' 
-                    placeholder='Look around for your true teammate'
-                    size='sm'/>   
+                    size='sm'>   Look around for your teammate </h1>
                 {user.isAuthenticated ? (
                     <div className="navbar-desktop-right">
                         <Link to="/find">
-                            <SearchOutlined className="navbar-desktop-link" />
+                            <SearchOutlined className="navbar-desktop-link" twoToneColor = '#183d70' />
                         </Link>
                         <Link to="/teams">
-                            <HomeTwoTone className="navbar-desktop-link" />
+                            <HomeTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
                         </Link>
                         <Link to="/profile">
-                            <ProfileTwoTone className="navbar-desktop-link" />
+                            <ProfileTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
                         </Link>
                         {/* <Link to="/work">
                             <DollarCircleTwoTone className="navbar-desktop-link" />
@@ -93,10 +93,11 @@ const DesktopNav = (props) => {
                             <WechatOutlined  className="navbar-desktop-link" />
                         </Link> */}
                         <Link to="/settings">
-                            <SettingTwoTone className="navbar-desktop-link" />
+                            <SettingTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
                         </Link>
                         <Link to='/'>
                             <LogoutOutlined
+                                twoToneColor = '#183d70'
                                 className="navbar-desktop-link"
                                 onClick={()=>{
                                     dispatch(logoutUser());
@@ -111,13 +112,14 @@ const DesktopNav = (props) => {
                         <div className='navbar-desktop-profile-picture-container'>
                             <Link to='/profile'>
                                 <img width='22' height='20' className='navbar-desktop-profile-picture' src={profileImageURL}/>
-                                <span className='navbar-desktop-user-firstname'><a>{firstName}</a></span>
+                                <span className='navbar-desktop-user-firstname'><a style = {{color: '#183d70'}}>{" " + firstName}</a></span>
                             </Link>
                         </div>
                     </div>
                 ) : (
                         <div className="navbar-desktop-right">
                             <LoginOutlined
+                                twoToneColor = '#183d70'
                                 className="navbar-desktop-link"
                                 onClick={props.toggleModal}
                             />
@@ -170,8 +172,8 @@ const MobileNav = (props) => {
                         onClick={toggleNav}
                     >
                         {React.createElement(
-                            isOpen ? MenuFoldOutlined : MenuUnfoldOutlined
-                        )}
+                            isOpen ? MenuFoldOutlined : MenuUnfoldOutlined  
+                        , {color: '#183d70'})}
                     </Button>
 
                     <Drawer
@@ -243,7 +245,7 @@ const MobileNav = (props) => {
                                         className="navbar-mobile-drawer-link"
                                         onClick={toggleNav}
                                     >
-                                        <SettingTwoTone className="navbar-mobile-drawer-link-icon" />{" "}
+                                        <SettingTwoTone className="navbar-mobile-drawer-link-icon" twoToneColor = '#183d70' />{" "}
                                         <span className='navbar-mobile-drawer-link-text'>Settings</span>
                                     </Link>
                                 </List.Item>
@@ -254,6 +256,7 @@ const MobileNav = (props) => {
                                         <LoginOutlined
                                             className="navbar-mobile-drawer-link-icon"
                                             onClick={() => { toggleNav(); props.toggleModal(); }}
+                                            twoToneColor = '#183d70'
                                         />
                                     <span className='navbar-mobile-drawer-link-text'>Join Us</span>
                                 </List.Item>
@@ -292,17 +295,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/*<Link to='/'>
-    <LogoutOutlined
-        className="navbar-desktop-link"
-        onClick={()=>{
-            dispatch(logoutUser());
-            if (window.location.pathname == '/' || window.location.pathname == '/teams') {
-                window.location.reload();
-            } // This is a somewhat dirty method of doing this
-            return <Redirect to='/'/>;
-        }
-    }/>
-    </Link>
-*/ // Logout button

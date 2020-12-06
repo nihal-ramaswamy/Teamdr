@@ -56,15 +56,14 @@ function TeamderCards(props) {
                             <InfoIcon onClick={()=>{
                               setUserInFocus(user);
                               setShowInfoModal(true)}}
-                              style={{cursor:'pointer'}}/>
+                              style={{cursor:'pointer', color: '#183d70'}}/>
                             <h3>{user.name}</h3>
                         </div>
                       </TeamderCard>
+
                     </>
                 )})}
       </div>
-
-      
   </div>); 
 
 }
