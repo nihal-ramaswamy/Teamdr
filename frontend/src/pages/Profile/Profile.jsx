@@ -11,13 +11,14 @@ import handleViewport from 'react-in-viewport';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-
-
-
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import Rating from '@material-ui/lab/Rating';
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import FooterComponent from "../../components/Footer/Footer";
 import AuthModal from "../../components/Modal/Modal.jsx";
 import PortfolioPage from "../../components/Portfolio/Portfolio";
-
+import Typography from '@material-ui/core/Typography';
 import getConfig from "../../helpers/getConfig";
 import By from "../../helpers/sort";
 
@@ -63,7 +64,49 @@ const ProfileImageContainer = styled.div`
 
 
 
+const labels = {
+	0.5: 'Useless',
+	1: 'Useless+',
+	1.5: 'Poor',
+	2: 'Poor+',
+	2.5: 'Ok',
+	3: 'Ok+',
+	3.5: 'Good',
+	4: 'Good+',
+	4.5: 'Excellent',
+	5: 'Excellent+',
+  };
+  const useStyles = makeStyles({
+	root: {
+	  width: 200,
+	  display: 'flex',
+	  alignItems: 'center',
+	},
+  });
 
+  
+  const GiveRating = (props) => {
+	const [value, setValue] = React.useState(2);
+  	const [hover, setHover] = React.useState(-1);
+	const classes = useStyles();
+
+	return (
+		<div className={classes.root}>
+		<Rating
+			name="hover-feedback"
+			value={props.value}
+			precision={0.5}
+			onChange={(event, newValue) => {
+			setValue(newValue);
+			}}
+			onChangeActive={(event, newHover) => {
+			setHover(newHover);
+			}}
+		/>
+		{props.value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : props.value]}</Box>}
+		</div>
+	);
+}
 
 const UserProfileComponent = ({ match }) => {
 	const dispatch = useDispatch();
@@ -214,12 +257,57 @@ const UserProfileComponent = ({ match }) => {
 
 					</div>
 
-					{curSection === "portfolio" && 
+					{(curSection === "portfolio" && isOwnProfile) ? 
+						<>
+						<div style = {{
+							fontSize: '20px'
+						}}>
+						<div className = "show-for-web">NAME: </div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
+
+						<div className = "show-for-web"><FaGithub /> GitHub:</div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />
+
+						<div className = "show-for-web"><FaLinkedin /> LinkedIn:</div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.linkedin ? user.linked : "N/A"}</div> <br />
+
+						<div className = "show-for-web">Rating:</div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
+						</div>
+						
 						<div className="user-profile-portfolio-ctnr">
 								<PortfolioPage user={user} isOwnProfile={isOwnProfile} key={user._id}/>
 						</div>
+						</>
+						:
+						<div style = {{
+							fontSize: '20px'
+						}}>
+						<div className = "show-for-web">NAME: </div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
+
+						<div className = "show-for-web"><FaGithub /> GitHub:</div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />
+
+						<div className = "show-for-web"><FaLinkedin /> LinkedIn:</div>
+						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.linkedin ? user.linked : "N/A"}</div> <br />
+
+						<div className = "show-for-web">Rating:</div>
+						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
+
+						<div className = "show-for-web">Give Rating:</div>
+						<div className = "show-for-web"><GiveRating value = {2}/></div> <br />
+						</div>
+
 					}
 
+					{/* <FooterComponent /> */}
 				</div> // Profile container ends
 			)}
 		</div>

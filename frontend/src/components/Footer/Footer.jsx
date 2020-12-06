@@ -4,7 +4,7 @@ import './Footer.css';
 import { Link } from "react-router-dom";
 
 
-import { FaFacebookSquare, FaInstagramSquare , FaLinkedin, FaGithub } from 'react-icons/fa';
+import {FaGithub } from 'react-icons/fa';
 import { Footer } from 'antd/lib/layout/layout';
 
 const FooterComponent = () => {
