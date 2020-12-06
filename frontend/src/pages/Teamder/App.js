@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import _ from 'lodash';
 import "./App.css";
 import TeamderCards from "./TeamderCards";
-import SwipeButtons from "./SwipeButtons";
 import ReactTags from 'react-tag-autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
 import { Row, Col } from "antd";
+import 'materialize-css'
 
 const MAX_TAGS = 12;
 
@@ -67,7 +67,8 @@ function App() {
 
 	return (
 		<>
-		<Row style={{marginTop:"5vmin"}}>
+
+		<Row style={{marginTop:"5vmin", marginLeft: '5vmin', marginRight: '5vmin'}}>
 			<Col>
 				<ReactTags
 					inline
@@ -77,16 +78,15 @@ function App() {
 					onAddition={(tagName) => onAddition(tagName)}
 					allowNew
 					autoresize
-					placeholderText={isInterestsFormDisabled? null:'Add an interest to filter by'} />
+					placeholderText={isInterestsFormDisabled? null:'Filter by interest(s)'}
+					style = {{
+						color: '#183d70'
+					}} />
 				
-			</Col>
-			<Col>
-				<SearchIcon style={{marginLeft:"1vmin", marginTop:"1vmin", cursor:'pointer'}} onClick={()=> submitSearch()}/>
 			</Col>
 		</Row>
 		{cardUsers.length > 0 && <div className="app">
 			<TeamderCards userList={cardUsers}/>
-			<SwipeButtons />
 		</div>}
 		</>
 	);

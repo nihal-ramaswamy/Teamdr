@@ -1,9 +1,14 @@
 .react-tags__search-input {
-    width:20vmin !important;
-    height: 5vmin !important;
+	width: 20vmin !important;
+	height: 5vmin !important;
 }
 
 .react-tags {
-    margin-left: 5vmin;
-    width: 20vmin !important;
+	margin-left: 5vmin;
+	width: 20vmin !important;
+}
+
+.usageText {
+	font-family: "Roboto Slab", serif;
+	color: #183d70;
 }
