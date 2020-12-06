@@ -9,8 +9,7 @@ import { Footer } from 'antd/lib/layout/layout';
 
 const FooterComponent = () => {
     return ( 
-        <footer className = "fOoter">
-        <Footer>
+        <footer className = "fOoter" >
         <div className="my-footer-container">
             <div className="footer-text-container">
             A progressive app project as a part of the Web Technologies course (UE19CS204) at PES University.
@@ -23,7 +22,6 @@ const FooterComponent = () => {
 
             </div>
         </div>
-        </Footer>
         </footer>
      );
 }

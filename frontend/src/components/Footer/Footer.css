@@ -37,8 +37,11 @@
 }
 
 .fOoter {
-	position: absolute;
+	background-color: white;
+	position: fixed;
 	left: 0;
 	bottom: 0;
 	right: 0;
+	font-family: "Roboto Slab", serif;
+	color: #183d70;
 }

@@ -13,7 +13,7 @@ import { Col, Row } from 'antd';
 import _ from 'lodash';
 import "./Settings.css";
 
-const MAX_TAGS = 12;
+const MAX_TAGS = 4;
 
 const SettingsPage = () => {
   // Getting user data
