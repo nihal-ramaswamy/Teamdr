@@ -18,6 +18,7 @@ function Teams() {
     const currentUser = useSelector((state) => state.user);
     const [currentId, setCurrentId] = useState(null);
     useEffect(() => {
+        //setCurSection('teammates')
       try {
         setCurrentId(currentUser.data._id)
       }
@@ -118,6 +119,7 @@ function Teams() {
         {curSection == "teammates" && currentUser.data.matched.map((matchedUser) => {
             const shownUser = userList.find(user => user._id == matchedUser)
             return (
+                <div>
                 <Row>
                     <Col span={1}>
                         <InfoIcon 
@@ -128,9 +130,11 @@ function Teams() {
                         />
                     </Col>
                     <Col>
-                        <a href={`/profile/${shownUser.username}`}>{shownUser.name}</a>
+                        <a href={`/profile/${shownUser.username}`} className = "people">{shownUser.name}</a>
                     </Col>
+                    <hr />
                 </Row>
+                </div>
             )
         })}
 		</div>
