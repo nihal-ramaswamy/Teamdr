@@ -7,7 +7,7 @@ import * as userActions from "../redux/actions/user";
 import Teamder from './Teamder/App';
 
 import { Spin } from "antd";
-
+import FooterComponent from '../components/Footer/Footer';
 
 
 import Navbar from "../components/Navbar/Navbar";
@@ -44,6 +44,7 @@ const BaseComponent = () => {
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
           <Route exact path="/find" component={Teamder} />
         </Switch>
+        {/* <FooterComponent /> */}
       </BrowserRouter>
     </div>
   );

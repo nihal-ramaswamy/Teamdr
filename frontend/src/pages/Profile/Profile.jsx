@@ -220,7 +220,6 @@ const UserProfileComponent = ({ match }) => {
 						</div>
 					}
 
-					<FooterComponent />
 				</div> // Profile container ends
 			)}
 		</div>

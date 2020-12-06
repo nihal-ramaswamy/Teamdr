@@ -12,3 +12,7 @@
 	font-family: "Roboto Slab", serif;
 	color: #183d70;
 }
+
+.pop-up {
+	position: relative;
+}
