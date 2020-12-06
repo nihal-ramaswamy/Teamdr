@@ -275,11 +275,11 @@ const PortfolioPage = (props) => {
           </div>}
 
           <div className="portfolio-right-col">
-            <button onClick={toggleModal} className="portfolio-btns" style={{cursor:'pointer'}}>
+            {/* <button onClick={toggleModal} className="portfolio-btns" style={{cursor:'pointer'}}>
               PRESENT
             </button>
 
-            <button className="portfolio-btns" style={{cursor:'pointer'}}>SHARE</button>
+            <button className="portfolio-btns" style={{cursor:'pointer'}}>SHARE</button> */}
 
             {props.isOwnProfile && <div className="portfolio-switch-container">
               <h3>STATUS</h3>
