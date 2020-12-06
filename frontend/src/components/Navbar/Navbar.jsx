@@ -94,7 +94,7 @@ const DesktopNav = (props) => {
                                 className="navbar-desktop-link"
                                 onClick={()=>{
                                     dispatch(logoutUser());
-                                    if (window.location.pathname == '/' || window.location.pathname == '/teams') {
+                                    if (window.location.pathname === '/' || window.location.pathname === '/teams') {
                                         window.location.reload();
                                     }
                                     return <Redirect to='/'/>;

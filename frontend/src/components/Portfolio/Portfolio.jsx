@@ -85,7 +85,7 @@ const PortfolioPage = (props) => {
   /* SAVE */
   // Function to handle save portfolio
   const handleSavePortfolio = async (TYPE, flag) => {
-    if (TYPE == 'UPLOAD'){
+    if (TYPE === 'UPLOAD'){
       if (curSelectedPics) {
         changeInitialSelectedPics(curSelectedPics);
         curSelectedPics.slice().map(async (graphical) => {
@@ -95,7 +95,7 @@ const PortfolioPage = (props) => {
         })
       }
     }
-    else if (TYPE == 'REORDER') {
+    else if (TYPE === 'REORDER') {
       if (curSelectedPics) {
         changeInitialSelectedPics(curSelectedPics);
         const graphicalIds = curSelectedPics.map(picture => picture.id);
@@ -152,7 +152,7 @@ const PortfolioPage = (props) => {
   const DragDropGrid = (props) => {
     const { items, moveItem } = useContext(GridContext);
     useEffect(() => {
-      if (items.length == props.curSelectedPics.length) changeCurSelectedPics(items);
+      if (items.length === props.curSelectedPics.length) changeCurSelectedPics(items);
     }, [items])
 
     return(
@@ -206,6 +206,7 @@ const PortfolioPage = (props) => {
               {initialSelectedPics.slice().map((graphical) => (
                     <SwiperSlide className="fullscreen-modal-slide" key={graphical.id}>
                       <ImageContainerFull 
+
                         image={graphical.imgurl} 
                         id={graphical.id} />
                     </SwiperSlide>
@@ -240,6 +241,7 @@ const PortfolioPage = (props) => {
                     >
                       {curSelectedPics.slice().map((img, index) => (
                               <PictureBox
+                                key={img.id}
                                 image={img.imgurl}
                                 id={img.id}
                                 curSelectedPics={curSelectedPics}

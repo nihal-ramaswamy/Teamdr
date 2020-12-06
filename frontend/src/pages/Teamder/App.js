@@ -17,7 +17,7 @@ function App() {
 	const [cardUsers, setCards] = useState([]);
 	useEffect(() => {
 		setCards(userList);
-		console.log(userList);
+		// console.log(userList);
 	}, [userList]);
 	const [Interests, updateInterests] = useState([]);
 	const [isInterestsFormDisabled, toggleInterestsFormDisabled] = useState(false);
@@ -26,7 +26,7 @@ function App() {
 	const onDelete = (id) => {
 		let copyOfInterests = Interests.slice();
 		_.remove(copyOfInterests, (interest) => {
-			return interest.id == id;
+			return interest.id === id;
 		});
 		copyOfInterests.forEach((interest, id) => interest.id = id);
 		updateInterests([...copyOfInterests]);
@@ -46,10 +46,10 @@ function App() {
 	}
 
 	useEffect(() => {
-	if (Interests.length == MAX_TAGS) {
+	if (Interests.length === MAX_TAGS) {
 		toggleInterestsForm(true);
 	}
-	else if (Interests.length == MAX_TAGS -1) {
+	else if (Interests.length === MAX_TAGS -1) {
 		toggleInterestsForm(false);
 	}
 	}, [Interests])
@@ -60,7 +60,7 @@ function App() {
 			},
 			getConfig()
 		)
-		console.log(filteredUsers);
+		// console.log(filteredUsers);
 		setCards(filteredUsers.data.data);
 	}
 

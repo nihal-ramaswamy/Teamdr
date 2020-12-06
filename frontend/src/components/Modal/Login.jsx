@@ -36,11 +36,11 @@ const LoginModal = (props) => {
     const dispatch = useDispatch();
 
     const enterHandler = (e) => {
-        if (e.key == 'Enter') {
-            if (e.target == usernameField.current) passwordField.current.focus();
-            else if (e.target == passwordField.current) handleSubmit();
+        if (e.key === 'Enter') {
+            if (e.target === usernameField.current) passwordField.current.focus();
+            else if (e.target === passwordField.current) handleSubmit();
         }
-        else if (e.key == 'Tab' && e.target == usernameField.current) passwordField.current.focus();
+        else if (e.key === 'Tab' && e.target === usernameField.current) passwordField.current.focus();
     }
     const handleSubmit = async () => {
         if (password.length < 4) {

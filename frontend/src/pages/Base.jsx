@@ -22,7 +22,7 @@ import ErrorBoundary from '../components/Error/Error';
 const BaseComponent = () => {   
   const user = useSelector((state) => state.user);
   const userList = useSelector((state) => state.users.listOfUsers);
-  console.log(userList);
+  // console.log(userList);
 
   const dispatch = useDispatch();
 

@@ -34,10 +34,10 @@ const RegisterModal = (props) => {
     const dispatch = useDispatch();
 
     const enterHandler = (e) => {
-        if (e.target == nameField.current && (e.key == 'Enter' || e.key == 'Tab')) emailField.current.focus();
-        else if (e.target == usernameField.current && (e.key == 'Enter' || e.key == 'Tab')) passwordField.current.focus();
-        else if (e.target == passwordField.current && (e.key == 'Enter' || e.key == 'Tab')) confirmField.current.focus();
-        else if (e.key == 'Enter') {
+        if (e.target === nameField.current && (e.key === 'Enter' || e.key === 'Tab')) emailField.current.focus();
+        else if (e.target === usernameField.current && (e.key === 'Enter' || e.key === 'Tab')) passwordField.current.focus();
+        else if (e.target === passwordField.current && (e.key === 'Enter' || e.key === 'Tab')) confirmField.current.focus();
+        else if (e.key === 'Enter') {
             step === 2 ? handleSubmit() : updateStep(step + 1);
         }
     }

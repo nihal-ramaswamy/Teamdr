@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useRef, useState, useEffect } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
+// import { a } from 'react-router-dom';
 import getConfig from "../../helpers/getConfig";
 import { deleteImage, uploadFile } from "../../helpers/image";
 import { updateUserSettings } from "../../redux/actions/user";
@@ -47,7 +47,7 @@ const SettingsPage = () => {
   const onDelete = (id) => {
     let copyOfInterests = Interests.slice();
     _.remove(copyOfInterests, (interest) => {
-        return interest.id == id;
+        return interest.id === id;
     });
     copyOfInterests.forEach((interest, id) => interest.id = id);
     updateInterests([...copyOfInterests]);
@@ -69,10 +69,10 @@ const SettingsPage = () => {
     }
 
     useEffect(() => {
-      if (Interests.length == MAX_TAGS) {
+      if (Interests.length === MAX_TAGS) {
           toggleInterestsForm(true);
       }
-      else if (Interests.length == MAX_TAGS -1) {
+      else if (Interests.length === MAX_TAGS -1) {
           toggleInterestsForm(false);
       }
     }, [Interests])
@@ -82,7 +82,7 @@ const SettingsPage = () => {
     let lastNameHTMLele = useRef(null);
     let userNameHTMLele = useRef(null);
     let userGitHubHTMLele = useRef(null);
-    let userLinkedInHTMLele = useRef(null);
+    let useraedInHTMLele = useRef(null);
     let userBioHTMLele = useRef(null);
     let emailHTMLele = useRef(null);
     let interestsRef = useRef(null);
@@ -176,7 +176,7 @@ const SettingsPage = () => {
       "name": firstNameHTMLele.current.value + "_" + lastNameHTMLele.current.value,
       "username": userNameHTMLele.current.value,
       "github": userGitHubHTMLele.current.value,
-      "linkedin": userLinkedInHTMLele.current.value,
+      "aedin": useraedInHTMLele.current.value,
       "email": emailHTMLele.current.value,
       "bio": userBioHTMLele.current.value,
       "interests": [...user.data.interests, ...interests]
@@ -307,13 +307,13 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="one-form-field">
-                    <label>LinkedIn</label>
+                    <label>aedIn</label>
 
                     <input
-                      id="user-linkedin"
+                      id="user-aedin"
                       className="one-form-field-input"
-                      ref={userLinkedInHTMLele}
-                      defaultValue={user.data.linkedin}
+                      ref={useraedInHTMLele}
+                      defaultValue={user.data.aedin}
                       required
                     />
                   </div>
@@ -326,7 +326,7 @@ const SettingsPage = () => {
                       className="one-form-field-input"
                       maxLength="200"
                       ref={userBioHTMLele}
-                      defaultValue={user.data.linkedin}
+                      defaultValue={user.data.aedin}
                       required
                     />
                   </div>
@@ -351,7 +351,7 @@ const SettingsPage = () => {
               </div>
 
               <div className="settings-card-buttons-container">
-                <Link href={'/settings'} className="settings-revert-btn">REVERT</Link>
+                <a href={'/settings'} className="settings-revert-btn">REVERT</a>
                 <button
                   id="account-settings-update-btn"
                   className="settings-update-btn"
@@ -414,7 +414,7 @@ const SettingsPage = () => {
               </div>
 
               <div className="settings-card-buttons-container">
-                <Link href={'/settings'} className="settings-revert-btn">REVERT</Link>
+                <a href={'/settings'} className="settings-revert-btn">REVERT</a>
                 <button
                   className="settings-update-btn"
                   onClick={handlePasswordChangeClick}
@@ -428,7 +428,7 @@ const SettingsPage = () => {
               <h3 className="settings-card-header">Help & Support</h3>
 
               {/* <textarea className="suppor-request-textarea" required></textarea> */}
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3EUXfG8KL1AUH9La3fc4PwpM2fu-DlA_oy1CkLdUsB2hV-w/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3EUXfG8KL1AUH9La3fc4PwpM2fu-DlA_oy1CkLdUsB2hV-w/viewform?embedded=true" width="100%" height="1000" frameBorder="0" marginHeight="0" marginWidth="0">Loading…</iframe>
 
               <div className="settings-card-buttons-container">
                 {/* <button className="settings-update-btn">SUBMIT</button> */}

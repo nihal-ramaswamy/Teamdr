@@ -14,7 +14,7 @@ import { Row, Col } from "antd";
 function Teams() {
     let [value, setValue] = useState("");
     const userList = useSelector((state) => state.users.listOfUsers);
-    console.log(userList);
+    // console.log(userList);
     const currentUser = useSelector((state) => state.user);
     const [currentId, setCurrentId] = useState(null);
     useEffect(() => {
@@ -29,7 +29,7 @@ function Teams() {
 	const [cardUsers, setCards] = useState([]);
 	useEffect(() => {
 		setCards(userList);
-		console.log(userList);
+		// console.log(userList);
 	}, [userList]);
 
     const [showInfoModal, setShowInfoModal] = useState(false);
@@ -93,13 +93,15 @@ function Teams() {
                 </button>
             </div>
         <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus} />
-        {curSection == "requests" && currentUser.data.teamRequests.map((requester) => {
-            const shownUser = userList.find(user => user._id == requester);
-            return (<Row>
+        {curSection === "requests" && currentUser.data.teamRequests.map((requester, index) => {
+            const shownUser = userList.find(user => user._id === requester);
+            return (
+                <React.Fragment key = {"requests " + index}>
+                    <Row>
                         <Col span={1}>
                             <InfoIcon 
                                 onClick={()=>{
-                                setUserInFocus(userList.find(user => user._id == requester));
+                                setUserInFocus(userList.find(user => user._id === requester));
                                 setShowInfoModal(true)}}
                                 style={{cursor:'pointer'}}
                             />
@@ -114,17 +116,18 @@ function Teams() {
                             <CancelIcon style={{cursor:'pointer'}} onClick={()=>ReactToRequest('no', requester)}/>
                         </Col>
                     </Row>
+                    </React.Fragment>
             )
         })}
-        {curSection == "teammates" && currentUser.data.matched.map((matchedUser) => {
-            const shownUser = userList.find(user => user._id == matchedUser)
+        {curSection === "teammates" && currentUser.data.matched.map((matchedUser, index) => {
+            const shownUser = userList.find(user => user._id === matchedUser)
             return (
-                <div>
+                <div key = {"teammates " + index}>
                 <Row>
                     <Col span={1}>
                         <InfoIcon 
                         onClick={()=>{
-                        setUserInFocus(userList.find(user => user._id == matchedUser));
+                        setUserInFocus(userList.find(user => user._id === matchedUser));
                         setShowInfoModal(true)}}
                         style={{cursor:'pointer'}}
                         />

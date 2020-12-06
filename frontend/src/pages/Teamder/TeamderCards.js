@@ -48,11 +48,11 @@ function TeamderCards(props) {
                       location = user.profileImage.location
                     }
                     return (
-                      <>
-                      <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus}/>
-                      <TeamderCard className="swipe" key={user._id} preventSwipe={["up","down"]} onSwipe={(dir) => swiped(dir, user._id)} onCardLeftScreen={() => outOfFrame(user.name)}>
+                      <React.Fragment key = {user._id}>
+                      <InfoModal key = {"INFO" + user._id + user.email} isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus}/>
+                      <TeamderCard className="swipe" key={"Teamder" + user._id + user.email} preventSwipe={["up","down"]} onSwipe={(dir) => swiped(dir, user._id)} onCardLeftScreen={() => outOfFrame(user.name)}>
                         
-                        <div style={{ backgroundImage: `url(${location})`}} className="card">
+                        <div key = {"DIV" + user._id+ user.email} style={{ backgroundImage: `url(${location})`}} className="card">
                             <InfoIcon onClick={()=>{
                               setUserInFocus(user);
                               setShowInfoModal(true)}}
@@ -61,7 +61,7 @@ function TeamderCards(props) {
                         </div>
                       </TeamderCard>
 
-                    </>
+                    </React.Fragment>
                 )})}
       </div>
   </div>); 
