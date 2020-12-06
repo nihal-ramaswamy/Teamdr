@@ -17,7 +17,7 @@ import About from '../components/About/About'
 import TeamsPage from "./Teams/Teams";
 import UserProfileComponent from "./Profile/Profile";
 import SettingsPage from "./Settings/Settings";
-
+import ErrorBoundary from '../components/Error/Error';
 
 const BaseComponent = () => {   
   const user = useSelector((state) => state.user);
@@ -35,6 +35,7 @@ const BaseComponent = () => {
     <div>
       <BrowserRouter>
         <Navbar />
+      <ErrorBoundary>
         <Switch>
           <Route exact path="/" component={About} />
           <Route exact path="/profile" component={UserProfileComponent} />
@@ -44,6 +45,7 @@ const BaseComponent = () => {
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
           <Route exact path="/find" component={Teamder} />
         </Switch>
+    </ErrorBoundary>
         <FooterComponent />
       </BrowserRouter>
     </div>

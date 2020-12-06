@@ -10,7 +10,6 @@ import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
 import { Row, Col } from "antd";
 import 'materialize-css'
-
 const MAX_TAGS = 4;
 
 function App() {
@@ -66,8 +65,7 @@ function App() {
 	}
 
 	return (
-		<>
-
+			<>
 		<Row style={{marginTop:"5vmin", marginLeft: '5vmin', marginRight: '5vmin'}}>
 			<Col>
 				<ReactTags

@@ -3,6 +3,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 <html lang="en">
   <head>
+    <script>
+      window.addEventListener('error', function(e){
+        // prevent React's listener from firing
+        e.stopImmediatePropagation();
+        // prevent the browser's console error message 
+        e.preventDefault();
+      });
+</script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
