@@ -17,6 +17,7 @@ import { DEFAULT_PROFILE_PIC_URL } from "../../shared/config";
 import AuthModal from "../Modal/Modal.jsx";
 import "./Navbar.css";
 import 'materialize-css';
+import Dropdown from './Dropdown';
 
 const { Header } = Layout;
 
@@ -70,31 +71,23 @@ const DesktopNav = (props) => {
                 <Link className="navbar-desktop-left" to="/">
                     <img src='assets/logo.png'></img>
                 </Link>
-                <h1 
+                {/* <h1 
                     style={{borderRadius:'10vmin 10vmin', fontWeight: 'bolder', color: '#183d70'
                 }} 
                     className='navbar-desktop-search-bar'
-                    size='sm'>   Look around for your teammate </h1>
+                    size='sm'>   Look around for your teammate </h1> */}
+                <Input 
+                    style={{borderRadius:'10vmin 10vmin'}} 
+                    className='navbar-desktop-search-bar'
+                    type='search' 
+                    placeholder='Look around for your true teammate'
+                    size='sm'/>  
                 {user.isAuthenticated ? (
                     <div className="navbar-desktop-right">
-                        <Link to="/find">
-                            <SearchOutlined className="navbar-desktop-link" twoToneColor = '#183d70' />
-                        </Link>
-                        <Link to="/teams">
-                            <HomeTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
-                        </Link>
-                        <Link to="/profile">
-                            <ProfileTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
-                        </Link>
-                        {/* <Link to="/work">
-                            <DollarCircleTwoTone className="navbar-desktop-link" />
-                        </Link>
-                        <Link to="/chats">
-                            <WechatOutlined  className="navbar-desktop-link" />
-                        </Link> */}
-                        <Link to="/settings">
-                            <SettingTwoTone className="navbar-desktop-link" twoToneColor = '#183d70' />
-                        </Link>
+                        <div className='navbar-desktop-profile-picture-container'>
+                        <Dropdown profileImageURL = {profileImageURL} />
+
+                        </div>
                         <Link to='/'>
                             <LogoutOutlined
                                 twoToneColor = '#183d70'
@@ -103,18 +96,12 @@ const DesktopNav = (props) => {
                                     dispatch(logoutUser());
                                     if (window.location.pathname == '/' || window.location.pathname == '/teams') {
                                         window.location.reload();
-                                    } // This is a somewhat dirty method of doing this
+                                    }
                                     return <Redirect to='/'/>;
     
                                 }
                             }/>
                         </Link>
-                        <div className='navbar-desktop-profile-picture-container'>
-                            <Link to='/profile'>
-                                <img width='22' height='20' className='navbar-desktop-profile-picture' src={profileImageURL}/>
-                                <span className='navbar-desktop-user-firstname'><a style = {{color: '#183d70'}}>{" " + firstName}</a></span>
-                            </Link>
-                        </div>
                     </div>
                 ) : (
                         <div className="navbar-desktop-right">
@@ -157,7 +144,6 @@ const MobileNav = (props) => {
             position = currentScrollPosition;
         }
         window.addEventListener('scroll', handleScroll);
-        //return () => window.removeEventListener('scroll', handleScroll);
       }, [sticky]);
 
     return (
@@ -218,26 +204,6 @@ const MobileNav = (props) => {
                                         <span className='navbar-mobile-drawer-link-text'>Profile</span>
                                     </Link>
                                 </List.Item>
-                                {/* <List.Item>
-                                    <Link
-                                        to="/work"
-                                        className="navbar-mobile-drawer-link"
-                                        onClick={toggleNav}
-                                    >
-                                        <DollarCircleTwoTone className="navbar-mobile-drawer-link-icon" />{" "}
-                                        Work
-                                    </Link>
-                                </List.Item>
-                                <List.Item>
-                                    <Link
-                                        to="/chats"
-                                        className="navbar-mobile-drawer-link"
-                                        onClick={toggleNav}
-                                    >
-                                        <WechatOutlined className="navbar-mobile-drawer-link-icon" />{" "}
-                                        Chats
-                                    </Link>
-                                </List.Item> */}
                                 
                                 <List.Item>
                                     <Link
