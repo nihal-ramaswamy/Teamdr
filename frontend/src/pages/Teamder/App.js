@@ -11,7 +11,7 @@ import { BASE_URL } from "../../shared/config";
 import { Row, Col } from "antd";
 import 'materialize-css'
 
-const MAX_TAGS = 12;
+const MAX_TAGS = 4;
 
 function App() {
 	const userList = useSelector((state) => state.users.listOfUsers);

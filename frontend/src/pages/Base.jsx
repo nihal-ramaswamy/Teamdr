@@ -12,7 +12,7 @@ import FooterComponent from '../components/Footer/Footer';
 
 import Navbar from "../components/Navbar/Navbar";
 import PortfolioPage from "../components/Portfolio/Portfolio";
-
+import About from '../components/About/About'
 
 import TeamsPage from "./Teams/Teams";
 import UserProfileComponent from "./Profile/Profile";
@@ -36,7 +36,7 @@ const BaseComponent = () => {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={TeamsPage} />
+          <Route exact path="/" component={About} />
           <Route exact path="/profile" component={UserProfileComponent} />
           <Route path="/profile/:username" component={UserProfileComponent} />
           <Route exact path="/teams" component={TeamsPage} />
@@ -44,7 +44,7 @@ const BaseComponent = () => {
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
           <Route exact path="/find" component={Teamder} />
         </Switch>
-        {/* <FooterComponent /> */}
+        <FooterComponent />
       </BrowserRouter>
     </div>
   );
