@@ -129,8 +129,8 @@ const UserProfileComponent = ({ match }) => {
 			axios
 				.get(`${BASE_URL}/api/user/${userData._id}`, getConfig())
 				.then((res) => {
-					console.log(res);
-					if (user === null || res.data.data._id !== user._id)
+					// console.log(res);
+					if (user === null || res.data.data._id != user._id)
 						modifyUser(res.data.data);
 				});
 			return;
@@ -198,7 +198,7 @@ const UserProfileComponent = ({ match }) => {
 		history.push("/settings");
 	};
 	
-	console.log(user);
+	// console.log(user);
 
 	return (
 		<div >
@@ -206,7 +206,7 @@ const UserProfileComponent = ({ match }) => {
 				<>
 					<Spin size="large" className="my-spinner" />
 					<p style={{ textAlign: "center" }}>
-						You need to be signed in to view this profile.
+						Loading
 					</p>
 				</>
 			) : (
