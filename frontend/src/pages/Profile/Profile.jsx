@@ -1,29 +1,20 @@
-import { Dropdown, Menu, Spin, Switch } from "antd";
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
+import { Spin } from "antd";
 import axios from "axios";
 import _ from "lodash";
 import React, { useEffect, useRef, useState } from "react";
-import { AiFillTrophy } from 'react-icons/ai';
-import { BsBookmarkFill } from 'react-icons/bs';
-import { IoMdImage } from 'react-icons/io';
-import { MdKeyboardArrowDown } from 'react-icons/md';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { RiFilePaper2Fill } from 'react-icons/ri';
-import handleViewport from 'react-in-viewport';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import Rating from '@material-ui/lab/Rating';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import FooterComponent from "../../components/Footer/Footer";
-import AuthModal from "../../components/Modal/Modal.jsx";
 import PortfolioPage from "../../components/Portfolio/Portfolio";
-import Typography from '@material-ui/core/Typography';
 import getConfig from "../../helpers/getConfig";
-import By from "../../helpers/sort";
-
-import { AUTH, BASE_URL,
-	DEFAULT_PROFILE_PIC_URL,
+import {
+	BASE_URL,
+	DEFAULT_PROFILE_PIC_URL
 } from "../../shared/config";
 import "./Profile.css";
 
@@ -214,7 +205,7 @@ const UserProfileComponent = ({ match }) => {
 				<>
 					<Spin size="large" className="my-spinner" />
 					<p style={{ textAlign: "center" }}>
-						Loading
+						Loading.. please wait.
 					</p>
 				</>
 			) : (
@@ -275,28 +266,28 @@ const UserProfileComponent = ({ match }) => {
 					</div>
 
 					{(curSection === "information") ? 
-						<>
+	
 						<div style = {{
 							fontSize: '20px'
 						}}>
-						<div className = "show-for-web">Name: </div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
+							<div className = "show-for-web">Name: </div>
 
-						<div className = "show-for-web"><FaGithub /> GitHub:</div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
 
-						<div className = "show-for-web"><FaLinkedin /> LinkedIn:</div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.linkedin ? user.linked : "N/A"}</div> <br />
+							<div className = "show-for-web"><FaGithub /> GitHub:</div>
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />
 
-						<div className = "show-for-web">Rating:</div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
+							<div className = "show-for-web"><FaLinkedin /> LinkedIn:</div>
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.linkedin ? user.linkedin : "N/A"}</div> <br />
+
+							<div className = "show-for-web">Rating:</div>
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
+							
+							<div className = "show-for-web">Bio</div>
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.bio ? user.bio : "N/A"}</div> <br />
 						</div>
 						
 
-						</>
 						:
 						<div className="user-profile-portfolio-ctnr">
 							<PortfolioPage user={user} isOwnProfile={isOwnProfile} key={user._id}/>

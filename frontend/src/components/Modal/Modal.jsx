@@ -1,17 +1,12 @@
+import { Col, Modal, Row } from "antd";
 import React, { useState } from "react";
-
-import { Modal, Row, Col } from "antd";
 import { PrimaryButton, SecondaryButton } from '../../containers/Button';
-
 import {
-    MobileContainer,
-    DesktopContainer,
+    DesktopContainer
 } from "../../containers/Responsive.jsx";
-
 import LoginModal from './Login';
-import RegisterModal from './Register';
-
 import "./Modal.css";
+import RegisterModal from './Register';
 
 const MainModal = (props) => {
     return (
@@ -48,40 +43,6 @@ const MainModal = (props) => {
                     </Col>
                 </Row>
             </DesktopContainer>
-            <MobileContainer>
-                <div className="auth-modal-main-header">SIGN UP TO CONTINUE</div>
-                <div className="auth-modal-main-sub">
-                    THREE STEPS, BARELY TAKES A MINUTE!
-                </div>
-                <Row className="auth-modal-main-cols">
-                    <Col span={6} offset={1}>
-                        <img src="/assets/member-signup.png" className="auth-modal-main-image" style={{ width: "30vw" }} alt="AUTH" />
-                    </Col>
-                    <Col span={6} offset={6}>
-                        <img src="/assets/signup-client.webp" className="auth-modal-main-image" style={{ width: "35vw", transform: "translateY(-2vw)" }} alt="AUTH" />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col span={20} offset={1}>
-                        <SecondaryButton onClick={() => props.switchModal(2)}>
-                            SIGN UP AS A MEMBER
-                    </SecondaryButton>
-                    </Col>
-                </Row>
-
-                <div style={{ height: "40px" }} />
-
-                <Row justify="center" align="bottom">
-                    <Col className="auth-modal-main-sub">
-                        ALREADY A USER? &nbsp;
-                </Col>
-                    <Col offset={0}>
-                        <PrimaryButton onClick={() => props.switchModal(1)}>
-                            LOG IN
-                    </PrimaryButton>
-                    </Col>
-                </Row>
-            </MobileContainer>
         </>
     );
 };

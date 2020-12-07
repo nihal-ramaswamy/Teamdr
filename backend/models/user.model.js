@@ -46,6 +46,11 @@ var User = new mongoose.Schema(
             default: null,
         },
 
+        bio: {
+            type: String,
+            default: null,
+        },
+
         swipedRightOn: [
             {
                 type: mongoose.Schema.Types.ObjectId,

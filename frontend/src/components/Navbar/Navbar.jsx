@@ -1,10 +1,11 @@
 import {
     HomeTwoTone,
     LoginOutlined,
-    LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileTwoTone, SearchOutlined,
+    LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ProfileTwoTone,
     SettingTwoTone
 } from "@ant-design/icons";
 import { Button, Drawer, Input, Layout, List } from "antd";
+import 'materialize-css';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from 'react-responsive';
@@ -15,9 +16,8 @@ import {
 import { logoutUser } from "../../redux/actions/user";
 import { DEFAULT_PROFILE_PIC_URL } from "../../shared/config";
 import AuthModal from "../Modal/Modal.jsx";
-import "./Navbar.css";
-import 'materialize-css';
 import Dropdown from './Dropdown';
+import "./Navbar.css";
 
 const { Header } = Layout;
 
@@ -69,7 +69,7 @@ const DesktopNav = (props) => {
             }>
             <nav className="navbar navbar-desktop-mdb">
                 <Link className="navbar-desktop-left" to="/">
-                    <img src='assets/logo.png'></img>
+                    <img src='http://localhost:3000/assets/logo.png'></img>
                 </Link>
                 {/* <h1 
                     style={{borderRadius:'10vmin 10vmin', fontWeight: 'bolder', color: '#183d70'

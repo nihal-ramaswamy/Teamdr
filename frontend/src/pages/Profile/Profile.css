@@ -4,6 +4,7 @@
   /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
+  padding-bottom: 10vmin;
 }
 
 .user-profile-cover-img-txt {

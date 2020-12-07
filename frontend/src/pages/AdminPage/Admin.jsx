@@ -1,14 +1,8 @@
+import { Tabs } from "antd";
 import React from "react";
 import "./Admin.css";
-
-import { Tabs } from "antd";
-
 import AdminPageDashboardComponent from "./AdminComponents/AdminPageDashboard";
 import RegularDrillsComponent from "./AdminComponents/RegularDrills";
-
-
-
-
 
 const { TabPane } = Tabs;
 

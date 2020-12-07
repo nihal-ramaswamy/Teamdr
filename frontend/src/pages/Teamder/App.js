@@ -1,16 +1,16 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import _ from 'lodash';
-import "./App.css";
-import TeamderCards from "./TeamderCards";
-import ReactTags from 'react-tag-autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
+import { Row } from "antd";
 import axios from "axios";
+import _ from 'lodash';
+import 'materialize-css';
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import ReactTags from 'react-tag-autocomplete';
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
-import { Row, Col } from "antd";
-import 'materialize-css'
-const MAX_TAGS = 4;
+import "./App.css";
+import TeamderCards from "./TeamderCards";
+const MAX_TAGS = 12;
 
 function App() {
 	const userList = useSelector((state) => state.users.listOfUsers);
@@ -65,9 +65,8 @@ function App() {
 	}
 
 	return (
-			<>
-		<Row style={{marginTop:"5vmin", marginLeft: '5vmin', marginRight: '5vmin'}}>
-			<Col>
+		<Row >
+			<div className="filters">
 				<ReactTags
 					inline
 					ref={interestsRef}
@@ -75,18 +74,20 @@ function App() {
 					onDelete={(id) => onDelete(id)}
 					onAddition={(tagName) => onAddition(tagName)}
 					allowNew
-					autoresize
 					placeholderText={isInterestsFormDisabled? null:'Filter by interest(s)'}
 					style = {{
 						color: '#183d70'
-					}} />
-				
-			</Col>
+					}}/>
+				<SearchIcon style={{display: "inline-block", position:"relative", top:"3.3%", cursor:"pointer"}} onClick={()=> submitSearch()}/>
+			</div>
+
+			
+		<div style={{margin: "2.5% 33%"}}>
+			{cardUsers.length > 0 && 
+				<TeamderCards userList={cardUsers}/>
+			}
+		</div>
 		</Row>
-		{cardUsers.length > 0 && <div className="app">
-			<TeamderCards userList={cardUsers}/>
-		</div>}
-		</>
 	);
 }
 

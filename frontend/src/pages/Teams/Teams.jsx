@@ -1,15 +1,14 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import _ from 'lodash';
-import "./Teams.css";
-import InfoModal from './InfoModal';
-import InfoIcon from '@material-ui/icons/Info';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CancelIcon from '@material-ui/icons/Cancel';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import InfoIcon from '@material-ui/icons/Info';
+import { Col, Row } from "antd";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import InfoModal from '../../components/Modal/InfoModal';
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
-import axios from "axios";
-import { Row, Col } from "antd";
+import "./Teams.css";
 
 function Teams() {
     let [value, setValue] = useState("");

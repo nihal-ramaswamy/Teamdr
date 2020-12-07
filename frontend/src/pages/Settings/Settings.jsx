@@ -1,16 +1,15 @@
 import { notification, Spin } from "antd";
 import axios from "axios";
-import React, { useRef, useState, useEffect } from "react";
+import _ from 'lodash';
+import React, { useEffect, useRef, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import ReactTags from 'react-tag-autocomplete';
 // import { a } from 'react-router-dom';
 import getConfig from "../../helpers/getConfig";
 import { deleteImage, uploadFile } from "../../helpers/image";
 import { updateUserSettings } from "../../redux/actions/user";
 import { BASE_URL, DEFAULT_PROFILE_PIC_URL } from "../../shared/config";
-import ReactTags from 'react-tag-autocomplete';
-import { Col, Row } from 'antd';
-import _ from 'lodash';
 import "./Settings.css";
 
 const MAX_TAGS = 4;
@@ -20,11 +19,6 @@ const SettingsPage = () => {
   const user = useSelector((state) => state.user);
 
   let imageURL = DEFAULT_PROFILE_PIC_URL;
-
-  if (user.data) {
-    const image = user.data.profileImage;
-    if (image) imageURL = image.location;
-  }
 
   const dispatch = useDispatch();
 
@@ -51,16 +45,18 @@ const SettingsPage = () => {
     });
     copyOfInterests.forEach((interest, id) => interest.id = id);
     updateInterests([...copyOfInterests]);
+    console.log(Interests); 
   }
 
     const onAddition = (tagName) => {
+      if (!user.data.interests.includes(tagName.name)) {
+        const interest = {
+            id: Interests.length,
+            name: tagName.name,
+        }
+        updateInterests([...Interests, interest]);
+        }
 
-
-          const interest = {
-              id: Interests.length,
-              name: tagName.name,
-          }
-          updateInterests([...Interests, interest]);
   }
 
     const toggleInterestsForm = (shouldInterestsFormBeDisabled) => {
@@ -69,11 +65,20 @@ const SettingsPage = () => {
     }
 
     useEffect(() => {
-      if (Interests.length === MAX_TAGS) {
-          toggleInterestsForm(true);
+      if (user.data) {
+        let interests = user.data.interests.map((interest, idx) => ({id:idx, name:interest}));
+        updateInterests([...interests]);
       }
-      else if (Interests.length === MAX_TAGS -1) {
-          toggleInterestsForm(false);
+    }, [user.data])
+
+    useEffect(() => {
+      if (Interests){
+        if (Interests.length === MAX_TAGS) {
+            toggleInterestsForm(true);
+        }
+        else if (Interests.length === MAX_TAGS -1) {
+            toggleInterestsForm(false);
+        }
       }
     }, [Interests])
 
@@ -82,7 +87,7 @@ const SettingsPage = () => {
     let lastNameHTMLele = useRef(null);
     let userNameHTMLele = useRef(null);
     let userGitHubHTMLele = useRef(null);
-    let useraedInHTMLele = useRef(null);
+    let userLinkedInHTMLele = useRef(null);
     let userBioHTMLele = useRef(null);
     let emailHTMLele = useRef(null);
     let interestsRef = useRef(null);
@@ -176,10 +181,10 @@ const SettingsPage = () => {
       "name": firstNameHTMLele.current.value + "_" + lastNameHTMLele.current.value,
       "username": userNameHTMLele.current.value,
       "github": userGitHubHTMLele.current.value,
-      "aedin": useraedInHTMLele.current.value,
+      "linkedin": userLinkedInHTMLele.current.value,
       "email": emailHTMLele.current.value,
       "bio": userBioHTMLele.current.value,
-      "interests": [...user.data.interests, ...interests]
+      "interests": [...interests]
     };
     console.log(obj)
     dispatch(updateUserSettings(obj));
@@ -307,13 +312,13 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="one-form-field">
-                    <label>aedIn</label>
+                    <label>LinkedIn</label>
 
                     <input
-                      id="user-aedin"
+                      id="user-LinkedIn"
                       className="one-form-field-input"
-                      ref={useraedInHTMLele}
-                      defaultValue={user.data.aedin}
+                      ref={userLinkedInHTMLele}
+                      defaultValue={user.data.linkedin}
                       required
                     />
                   </div>
@@ -326,7 +331,7 @@ const SettingsPage = () => {
                       className="one-form-field-input"
                       maxLength="200"
                       ref={userBioHTMLele}
-                      defaultValue={user.data.aedin}
+                      defaultValue={user.data.bio}
                       required
                     />
                   </div>

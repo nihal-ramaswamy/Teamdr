@@ -15,9 +15,12 @@ export default class ErrorBoundary extends React.Component {
       componentDidCatch = (error, info) => {
         this.setState({ error, info });
       };
+
+    
   
     render() {
       if (this.state.hasError) {
+        console.log(this.state.hasError && this.state.error)
         return (
             <h1 className = "Error">
                 Something went wrong. If app is in development mode, check console, Else open an issue

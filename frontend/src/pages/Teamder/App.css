@@ -1,12 +1,18 @@
 .react-tags__search-input {
 	width: 20vmin !important;
 	height: 5vmin !important;
-	margin-left: 6vmin;
+}
+.react-tags__selected {
+	margin-bottom: 2vmin;
 }
 
 .react-tags {
-	margin-left: 5vmin;
-	width: 20vmin !important;
+	margin-top: 3vmin;
+	display: inline-block;
+}
+
+.filters {
+	margin-left: 7.5%;
 }
 
 .usageText {

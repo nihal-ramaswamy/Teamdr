@@ -1,9 +1,9 @@
-import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Link, Redirect } from "react-router-dom";
-import Popup from './Popup'
+import React from 'react';
+import { Link } from "react-router-dom";
+import Popup from './Popup';
 
 export default function Dropdown(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,11 +31,11 @@ export default function Dropdown(props) {
         <Link to="/find">
             <MenuItem onClick={handleClose}>Find Teammates</MenuItem>
         </Link>
-        <Link to="/profile">
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-        </Link>
         <Link to="/teams">
             <MenuItem onClick={handleClose}>My Teams</MenuItem>
+        </Link>
+        <Link to="/profile">
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
         </Link>
         <Link to="/settings">
             <MenuItem onClick={handleClose}>Settings</MenuItem>

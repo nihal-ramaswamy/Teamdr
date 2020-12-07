@@ -1,18 +1,12 @@
-import React, { useState, useRef } from "react";
+import { Col, Row } from "antd";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-
-import { Row, Col } from "antd";
-
+import { PrimaryButton, TertiaryButton } from '../../containers/Button';
 import {
-    MobileContainer,
-    DesktopContainer,
+    DesktopContainer
 } from "../../containers/Responsive.jsx";
-import { PrimaryButton, TertiaryButton } from '../../containers/Button'
-
 import * as userActions from '../../redux/actions/user';
-
 import "./Modal.css";
-import { useEffect } from "react";
 
 const LoginModal = (props) => {
 
@@ -97,54 +91,6 @@ const LoginModal = (props) => {
                 </Row>
 
             </DesktopContainer>
-            <MobileContainer>
-
-                <Row justify="left" >
-                    <Col>
-                        <p className="auth-modal-auth-title">
-                            LOGIN
-                        </p>
-                        <p className="auth-modal-auth-sub">
-                            ENTER YOUR USERNAME AND PASSWORD
-                        </p>
-                    </Col>
-                </Row>
-
-                <div style={{ height: "20px" }} />
-
-                <Row justify="space-around">
-                    <Col>
-                        <img src="assets/member-signup.png" className="auth-modal-auth-image" alt="AUTH" />
-                    </Col>
-                </Row>
-
-                <div style={{ color: "var(--primary-hover-text)", textAlign: "center" }}>{err}</div>
-
-                <div style={{ height: "20px" }} />
-
-                <Row justify="space-around">
-
-                    <Col offset={2}>
-
-                        <form className="auth-form">
-                            <input type="text" value={username} onChange={(e) => updateUsername(e.target.value)} placeholder="ENTER USERNAME" />
-                            <input type="password" value={password} onChange={(e) => updatePassword(e.target.value)} placeholder="PASSWORD" />
-                        </form>
-
-                        <div className="auth-modal-auth-buttons">
-
-                            <TertiaryButton className="auth-modal-auth-button-left" onClick={handleSubmit}>
-                                LOGIN
-                            </TertiaryButton>
-                            <PrimaryButton className="auth-modal-auth-button-right" onClick={() => props.switchModal(0)}>
-                                BACK
-                            </PrimaryButton>
-
-                        </div>
-                    </Col>
-                </Row>
-
-            </MobileContainer>
         </>
     );
 }

@@ -1,14 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { fetchUsers } from "../../redux/actions/users";
-import * as userActions from "../../redux/actions/user";
-import TeamderCard from "react-tinder-card";
-import "./TeamderCards.css";
 import InfoIcon from '@material-ui/icons/Info';
 import axios from "axios";
-import InfoModal from './InfoModal'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import TeamderCard from "react-tinder-card";
+import InfoModal from '../../components/Modal/InfoModal';
 import getConfig from "../../helpers/getConfig";
 import { BASE_URL } from "../../shared/config";
+import "./TeamderCards.css";
 
 function TeamderCards(props) {
   const userList = props.userList;

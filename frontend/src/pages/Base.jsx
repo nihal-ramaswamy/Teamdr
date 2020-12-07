@@ -1,22 +1,16 @@
 import React, { useEffect } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { fetchUsers } from "../redux/actions/users";
-import * as userActions from "../redux/actions/user";
-import Teamder from './Teamder/App';
-
-import { Spin } from "antd";
 import FooterComponent from '../components/Footer/Footer';
-
-
 import Navbar from "../components/Navbar/Navbar";
 import PortfolioPage from "../components/Portfolio/Portfolio";
-import About from '../components/About/About'
-
-import TeamsPage from "./Teams/Teams";
+import * as userActions from "../redux/actions/user";
+import { fetchUsers } from "../redux/actions/users";
+import About from './About/About';
 import UserProfileComponent from "./Profile/Profile";
 import SettingsPage from "./Settings/Settings";
+import Teamder from './Teamder/App';
+import TeamsPage from "./Teams/Teams";
 import ErrorBoundary from '../components/Error/Error';
 
 const BaseComponent = () => {   
@@ -35,7 +29,6 @@ const BaseComponent = () => {
     <div>
       <BrowserRouter>
         <Navbar />
-      <ErrorBoundary>
         <Switch>
           <Route exact path="/" component={About} />
           <Route exact path="/profile" component={UserProfileComponent} />
@@ -45,7 +38,6 @@ const BaseComponent = () => {
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
           <Route exact path="/find" component={Teamder} />
         </Switch>
-    </ErrorBoundary>
         <FooterComponent />
       </BrowserRouter>
     </div>

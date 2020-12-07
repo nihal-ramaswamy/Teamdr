@@ -2,11 +2,9 @@ import { Col, Row, Steps } from "antd";
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { PrimaryButton, TertiaryButton } from '../../containers/Button';
-
 import {
-    DesktopContainer, MobileContainer
+    DesktopContainer
 } from "../../containers/Responsive.jsx";
-
 import * as userActions from '../../redux/actions/user';
 import "./Modal.css";
 
@@ -148,66 +146,6 @@ const RegisterModal = (props) => {
                 </Row>
 
             </DesktopContainer>
-            <MobileContainer>
-
-                <Row justify="left" >
-                    <Col>
-                        <p className="auth-modal-auth-title">
-                            SIGN UP
-                        </p>
-                        <p className="auth-modal-auth-sub">
-                            {
-                                step === 0 ? "ENTER YOUR NAME AND EMAIL" :
-                                    "ENTER USERNAME AND PASSWORD" 
-                            }
-                        </p>
-                    </Col>
-                </Row>
-
-                <div style={{ height: "10px" }} />
-
-                <Row justify="space-around">
-                    {step !== 2 ? <Col>
-                        <img src="assets/signup-client.webp" className="auth-modal-auth-image" alt="AUTH" />
-                    </Col> : ''}
-                </Row>
-
-                <div style={{ height: "10px" }} />
-
-                <Row justify="space-around">
-
-                    <Col offset={2}>
-
-       
-                            <form className="auth-form">
-                                {step === 0 ? <>
-                                    <input type="text" value={name} onChange={(e) => updateName(e.target.value)} placeholder="ENTER YOUR NAME" />
-                                    <input type="text" value={email} onChange={(e) => updateEmail(e.target.value)} placeholder="ENTER YOUR EMAIL" />
-                                </> : step === 1 ? <>
-                                    <input type="text" value={username} onChange={(e) => updateUsername(e.target.value)} placeholder="ENTER USERNAME" />
-                                    <input type="password" value={password} onChange={(e) => updatePassword(e.target.value)} placeholder="PASSWORD" />
-                                    <input type="password" value={confirmpassword} onChange={(e) => updateConfirmpassword(e.target.value)} placeholder="CONFIRM PASSWORD" />
-                                </> : <div />}
-
-                            </form>
-
-                        <div className="auth-modal-auth-err" >{err}</div>
-
-                        <div className="auth-modal-auth-buttons">
-
-                            <TertiaryButton className="auth-modal-auth-button-left" onClick={step === 0 ? () => props.switchModal(0) : () => updateStep(step - 1)}>
-                                BACK
-                            </TertiaryButton>
-                            <PrimaryButton className="auth-modal-auth-button-right" onClick={step === 2 ? handleSubmit : () => updateStep(step + 1)}>
-                                NEXT
-                            </PrimaryButton>
-
-                        </div>
-
-                    </Col>
-                </Row>
-
-            </MobileContainer>
         </>
     );
 }
