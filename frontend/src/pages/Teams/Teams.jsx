@@ -88,7 +88,7 @@ function Teams() {
                     className="user-profile-nav-btn"
                     style={{cursor:'pointer'}}
                 >
-                    <div className="show-for-web"> Team Requests </div>
+                    <div className="show-for-web"> Team Requests {currentUser.data.teamRequests.length > 0 && "("+String(currentUser.data.teamRequests.length)+")"} </div>
                 </button>
             </div>
         <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus} />
@@ -105,7 +105,7 @@ function Teams() {
                                 style={{cursor:'pointer'}}
                             />
                         </Col>
-                        <Col span={3}>
+                        <Col span={4}>
                             <a href={`/profile/${shownUser.username}`}>{shownUser.name}</a>
                         </Col>
                         <Col span={1}>

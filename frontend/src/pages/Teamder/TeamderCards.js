@@ -39,6 +39,7 @@ function TeamderCards(props) {
       <div className="teamderCards__cardContainer">
         {userList.filter((user) => user._id != currentId).filter((user) => !currentUser.data.swipedLeftOn.includes(user._id))
                   .filter((user) => !currentUser.data.swipedRightOn.includes(user._id))
+                  .filter((user) => !currentUser.data.teamRequests.includes(user._id))
                   .filter((user) => !currentUser.data.matched.includes(user._id))
                   .map(user => {
                     let location = "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"

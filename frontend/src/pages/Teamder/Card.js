@@ -29,26 +29,38 @@ export default function OutlinedCard(props) {
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Information
+        <Typography variant="h6" component="h6">
+        
+          Information:
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
           {bull}Name: {props.name}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
           {bull}GitHub: {props.github}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
           {bull}LinkedIn: {props.linkedin}
         </Typography>
-        <Typography variant="h5" component="h2">
-          {bull}Interests: {props.interests}
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          {bull}Interests: {props.interests.map((interest, idx) => {
+            let delim = ", ";
+            if (idx == props.interests.length - 1) {
+              delim = ""
+            } 
+            return (
+              interest+delim)
+            }
+          )}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Bio: {props.bio}
+        <Typography variant="h6" component="h6">
+            Bio:
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          Rating:
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          {props.bio}
+        </Typography>
+        <Typography variant="h6" component="h6">
+            Rating:
         </Typography>
         <Rating name="read-only" value={props.rating} readOnly />
         </CardContent>
