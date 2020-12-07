@@ -49,14 +49,15 @@ function TeamderCards(props) {
                     }
                     return (
                       <>
-                      <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus}/>
-                      <TeamderCard className="swipe" key={user._id} preventSwipe={["up","down"]} onSwipe={(dir) => swiped(dir, user._id)} onCardLeftScreen={() => outOfFrame(user.name)}>
+                      <InfoModal key = {"INFO" + user._id + user.email} isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus}/>
+                      <TeamderCard className="swipe" key={user._id + user.email} preventSwipe={["up","down"]} onSwipe={(dir) => swiped(dir, user._id)} onCardLeftScreen={() => outOfFrame(user.name)}>
                         
-                        <div style={{ backgroundImage: `url(${location})`}} className="card">
+                        <div key = {"DIV" + user._id+ user.email} style={{ backgroundImage: `url(${location})`}} className="card">
                             <InfoIcon onClick={()=>{
                               setUserInFocus(user);
                               setShowInfoModal(true)}}
                               style={{cursor:'pointer', color: '#183d70'}}/>
+                              key = {"CARD" + user._id + user.email}
                             <h3>{user.name}</h3>
                         </div>
                       </TeamderCard>

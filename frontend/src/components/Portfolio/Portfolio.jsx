@@ -206,6 +206,7 @@ const PortfolioPage = (props) => {
               {initialSelectedPics.slice().map((graphical) => (
                     <SwiperSlide className="fullscreen-modal-slide" key={graphical.id}>
                       <ImageContainerFull 
+
                         image={graphical.imgurl} 
                         id={graphical.id} />
                     </SwiperSlide>
@@ -240,6 +241,7 @@ const PortfolioPage = (props) => {
                     >
                       {curSelectedPics.slice().map((img, index) => (
                               <PictureBox
+                                key={img.id}
                                 image={img.imgurl}
                                 id={img.id}
                                 curSelectedPics={curSelectedPics}
