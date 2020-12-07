@@ -93,9 +93,11 @@ function Teams() {
                 </button>
             </div>
         <InfoModal isModalOpen={showInfoModal} toggleModal={()=>setShowInfoModal(!showInfoModal)} user={userInFocus} />
-        {curSection == "requests" && currentUser.data.teamRequests.map((requester) => {
+        {curSection == "requests" && currentUser.data.teamRequests.map((requester, index) => {
             const shownUser = userList.find(user => user._id == requester);
-            return (<Row>
+            return (
+                <React.Fragment key = {"requests " + index}>
+                    <Row>
                         <Col span={1}>
                             <InfoIcon 
                                 onClick={()=>{
@@ -114,12 +116,13 @@ function Teams() {
                             <CancelIcon style={{cursor:'pointer'}} onClick={()=>ReactToRequest('no', requester)}/>
                         </Col>
                     </Row>
+                    </React.Fragment>
             )
         })}
-        {curSection == "teammates" && currentUser.data.matched.map((matchedUser) => {
+        {curSection == "teammates" && currentUser.data.matched.map((matchedUser, index) => {
             const shownUser = userList.find(user => user._id == matchedUser)
             return (
-                <div>
+                <div key = {"teammates " + index}>
                 <Row>
                     <Col span={1}>
                         <InfoIcon 
