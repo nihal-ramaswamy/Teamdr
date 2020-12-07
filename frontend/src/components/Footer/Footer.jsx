@@ -9,7 +9,7 @@ import { Footer } from 'antd/lib/layout/layout';
 
 const FooterComponent = () => {
     return ( 
-        <footer className = "fOoter" >
+        <footer className = "footer-class" >
         <div className="my-footer-container">
             <div className="footer-text-container">
             A progressive app project as a part of the Web Technologies course (UE19CS204) at PES University.
