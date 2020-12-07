@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Modal, Row, Col } from "antd";
 import { PrimaryButton, SecondaryButton } from '../../containers/Button';
+import Card from './Card';
 
 import {
     MobileContainer,
@@ -15,31 +16,14 @@ const MainModal = (props) => {
     return (
         <>
             <DesktopContainer>
-
-                <div className="auth-modal-main-header">Information</div>
-                <div className="auth-modal-main-sub">
-                </div>
-                <Row className="auth-modal-main-cols">
-                    Name: {props.user.name} 
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    Github: {props.user.github}
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    LinkedIn: {props.user.linkedin}
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    Rating: {props.user.rating}
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    Bio: {props.user.linkedin}
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    Interests: {props.user.linkedin}
-                </Row>
-                <Row className="auth-modal-main-cols">
-                    Resume: {props.user.linkedin}
-                </Row>
+                <Card 
+                    name = {props.user.name} 
+                    github = {props.user.github} 
+                    linkedin = {props.user.linkedin} 
+                    bio = {props.user.bio}
+                    rating = {props.user.rating}
+                    interests = {props.user.interests}
+                     />
                 <div style={{ height: "40px" }} />
             </DesktopContainer>
             <MobileContainer>

@@ -18,15 +18,9 @@ function Teams() {
     const currentUser = useSelector((state) => state.user);
     const [currentId, setCurrentId] = useState(null);
     useEffect(() => {
-<<<<<<< HEAD
-        //setCurSection('teammates')
-      try {
-        setCurrentId(currentUser.data._id)
-=======
       try {
         setCurrentId(currentUser.data._id)
         setCurSection('teammates');
->>>>>>> 8cb41e31df5a93c2f500ab51a705cedc776de16d
       }
       catch {}
       }, [currentUser.data])
