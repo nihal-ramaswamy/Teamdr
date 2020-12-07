@@ -151,6 +151,7 @@ const UserProfileComponent = ({ match }) => {
 		if (user) {
 			const image = user.profileImage;
 			if (image) setImageURL(image.location);
+			setCurSection("information");
 		} else {
 		}
 	}, [user]);
@@ -177,19 +178,26 @@ const UserProfileComponent = ({ match }) => {
 	let hrs = today.getHours();
 
 	// Handling the sub sections of profile
-	const [curSection, changeCurSection] = useState("portfolio");
+	const [curSection, changeCurSection] = useState("information");
 
 	const portfolioButtonRef = useRef(null);
+	const AboutMeButtonRef = useRef(null);
 
 	const setCurSection = (sectionName) => {
 		if (curSection === "portfolio") {
 			portfolioButtonRef.current.className = "user-profile-nav-btn";
+		}
+		else if (curSection === "information") {
+			AboutMeButtonRef.current.className = "user-profile-nav-btn";
 		}
 
 		changeCurSection(sectionName);
 
 		if (sectionName === "portfolio") {
 			portfolioButtonRef.current.className = "user-profile-nav-btn user-profile-nav-active";
+		}
+		else if (sectionName === "information") {
+			AboutMeButtonRef.current.className = "user-profile-nav-btn user-profile-nav-active";
 		}
 	};
 
@@ -244,6 +252,15 @@ const UserProfileComponent = ({ match }) => {
 
 					{/* This div contains the navigation for profile */}
 					<div className="user-profile-nav-container">
+						<button
+							ref={AboutMeButtonRef}
+							onClick={() => setCurSection("information")}
+							className="user-profile-nav-btn"
+							style={{cursor:'pointer'}}
+						>
+							 <div className="show-for-web"> About Me </div>
+							<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
+						</button>
 
 						<button
 							ref={portfolioButtonRef}
@@ -251,18 +268,18 @@ const UserProfileComponent = ({ match }) => {
 							className="user-profile-nav-btn"
 							style={{cursor:'pointer'}}
 						>
-							 <div className="show-for-web"> PORTFOLIO </div>
+							 <div className="show-for-web"> Portfolio </div>
 							<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
 						</button>
 
 					</div>
 
-					{(curSection === "portfolio" && isOwnProfile) ? 
+					{(curSection === "information") ? 
 						<>
 						<div style = {{
 							fontSize: '20px'
 						}}>
-						<div className = "show-for-web">NAME: </div>
+						<div className = "show-for-web">Name: </div>
 						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
 						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
 
@@ -278,31 +295,11 @@ const UserProfileComponent = ({ match }) => {
 						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
 						</div>
 						
-						<div className="user-profile-portfolio-ctnr">
-								<PortfolioPage user={user} isOwnProfile={isOwnProfile} key={user._id}/>
-						</div>
+
 						</>
 						:
-						<div style = {{
-							fontSize: '20px'
-						}}>
-						<div className = "show-for-web">NAME: </div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
-
-						<div className = "show-for-web"><FaGithub /> GitHub:</div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />
-
-						<div className = "show-for-web"><FaLinkedin /> LinkedIn:</div>
-						<div className="show-for-mob"> <RiFilePaper2Fill/> </div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.linkedin ? user.linked : "N/A"}</div> <br />
-
-						<div className = "show-for-web">Rating:</div>
-						<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><Rating name="read-only" value={user.rating} readOnly /></div> <br />
-
-						<div className = "show-for-web">Give Rating:</div>
-						<div className = "show-for-web"><GiveRating value = {2}/></div> <br />
+						<div className="user-profile-portfolio-ctnr">
+							<PortfolioPage user={user} isOwnProfile={isOwnProfile} key={user._id}/>
 						</div>
 
 					}
