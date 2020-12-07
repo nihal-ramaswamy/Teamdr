@@ -75,7 +75,7 @@ export const logoutUser = () => async(dispatch) => {
             payload:null,
         });
         localStorage.clear();
-        window.location.reload();
+        
     }
     catch (error) {
         console.log('Could not log out.')

@@ -1,12 +1,12 @@
 .my-footer-container {
 	padding: 0px 3px;
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 2vmin;
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	font-size: 20px;
+	font-size: 17px;
 	color: var(--post-caption-txt-color);
 }
 
@@ -18,7 +18,7 @@
 }
 
 .my-footer-icon {
-	margin: 0px 7px;
+	margin: -3px 10px;
 	color: var(--post-caption-txt-color);
 }
 
@@ -38,10 +38,12 @@
 
 .fOoter {
 	background-color: white;
+	padding-left: 60vmin;
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	right: 0;
 	font-family: "Roboto Slab", serif;
 	color: #183d70;
+	z-index: 100;
 }

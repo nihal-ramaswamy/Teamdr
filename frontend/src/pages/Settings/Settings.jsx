@@ -307,10 +307,10 @@ const SettingsPage = () => {
                   </div>
 
                   <div className="one-form-field">
-                    <label>aedIn</label>
+                    <label>LinkedIn</label>
 
                     <input
-                      id="user-aedin"
+                      id="user-linkedin"
                       className="one-form-field-input"
                       ref={useraedInHTMLele}
                       defaultValue={user.data.aedin}

@@ -85,8 +85,7 @@ const DesktopNav = (props) => {
                 {user.isAuthenticated ? (
                     <div className="navbar-desktop-right">
                         <div className='navbar-desktop-profile-picture-container'>
-                        <Dropdown profileImageURL = {profileImageURL} />
-
+                            <Dropdown profileImageURL = {profileImageURL} />
                         </div>
                         <Link to='/'>
                             <LogoutOutlined
