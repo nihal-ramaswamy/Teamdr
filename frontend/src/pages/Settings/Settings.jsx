@@ -47,7 +47,7 @@ const SettingsPage = () => {
   const onDelete = (id) => {
     let copyOfInterests = Interests.slice();
     _.remove(copyOfInterests, (interest) => {
-        return interest.id == id;
+        return interest.id === id;
     });
     copyOfInterests.forEach((interest, id) => interest.id = id);
     updateInterests([...copyOfInterests]);
@@ -69,10 +69,10 @@ const SettingsPage = () => {
     }
 
     useEffect(() => {
-      if (Interests.length == MAX_TAGS) {
+      if (Interests.length === MAX_TAGS) {
           toggleInterestsForm(true);
       }
-      else if (Interests.length == MAX_TAGS -1) {
+      else if (Interests.length === MAX_TAGS -1) {
           toggleInterestsForm(false);
       }
     }, [Interests])
@@ -132,7 +132,7 @@ const SettingsPage = () => {
     if (!myFile) {
       openNotificationWithIcon('warning', "No File Selected")
     } else {
-      if (user.data.profileImage != null) {
+      if (user.data.profileImage !== null) {
         // Get the current id of the user,s profile image
 
         // Send a delete request for this id
@@ -154,7 +154,7 @@ const SettingsPage = () => {
 
   // function to remove the profile picture
   const removeProfileImage = async () => {
-    if (user.data.profileImage != null) {
+    if (user.data.profileImage !== null) {
       // Send a delete request for this id
       await deleteImage(user.data.profileImage);
     }

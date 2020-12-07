@@ -130,7 +130,7 @@ const UserProfileComponent = ({ match }) => {
 				.get(`${BASE_URL}/api/user/${userData._id}`, getConfig())
 				.then((res) => {
 					console.log(res);
-					if (user == null || res.data.data._id != user._id)
+					if (user === null || res.data.data._id !== user._id)
 						modifyUser(res.data.data);
 				});
 			return;
@@ -229,7 +229,7 @@ const UserProfileComponent = ({ match }) => {
 
 					{/* This div contains the 3 buttons for profile */}
 
-					{user == currentUser && (
+					{user === currentUser && (
 						<div className="user-profile-buttons-container">
 							<button className="user-profile-btn" style={{cursor:'pointer'}}>Manage</button>
 							<button

@@ -55,7 +55,7 @@ const PictureBox = (props) => {
             }])
         }
         else {
-            props.changeCurSelectedPics(props.curSelectedPics.filter(picture => picture.id != props.id))
+            props.changeCurSelectedPics(props.curSelectedPics.filter(picture => picture.id !== props.id))
         }
        // changeSelectionState(!isSelected);
     }

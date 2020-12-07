@@ -33,12 +33,12 @@ exports.getUsersForInterests = async (Interests) => {
 exports.Swipe = async (swiper, swipedId, typeOfSwipe) => {
 
     try {
-        if (typeOfSwipe == 'right') {
+        if (typeOfSwipe === 'right') {
             await User.findByIdAndUpdate(swiper._id, { $addToSet: { "swipedRightOn": swipedId } })
             await User.findByIdAndUpdate(swiper._id, { $pull: { "swipedLeftOn": swipedId } })
             await User.findByIdAndUpdate(swipedId, { $addToSet: { "teamRequests": swiper._id } })
         }
-        else if (typeOfSwipe == 'left') {
+        else if (typeOfSwipe === 'left') {
             await User.findByIdAndUpdate(swiper._id, { $addToSet: { "swipedRightOn": swipedId } })
         }
         else {
@@ -54,13 +54,13 @@ exports.Swipe = async (swiper, swipedId, typeOfSwipe) => {
 exports.ReactToRequest = async (swiper, swipedId, typeOfReaction) => {
 
     try {
-        if (typeOfReaction == 'yes') {
+        if (typeOfReaction === 'yes') {
             await User.findByIdAndUpdate(swiper._id, { $addToSet: { "matched": swipedId } })
             await User.findByIdAndUpdate(swiper._id, { $pull: { "teamRequests": swipedId } })
             await User.findByIdAndUpdate(swipedId, { $addToSet: { "matched": swiper._id} })
             await User.findByIdAndUpdate(swipedId, { $pull: { "swipedRightOn": swiper._id} })
         }
-        else if (typeOfReaction == 'no') {
+        else if (typeOfReaction === 'no') {
             await User.findByIdAndUpdate(swiper._id, { $pull: { "teamRequests": swipedId } })
         }
         else {
