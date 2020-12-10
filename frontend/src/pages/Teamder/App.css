@@ -4,7 +4,9 @@
 }
 .react-tags__selected {
 	margin-bottom: 2vmin;
+	display: inline-block;
 }
+
 
 .react-tags {
 	margin-top: 3vmin;

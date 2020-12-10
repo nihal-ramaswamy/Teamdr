@@ -7,7 +7,7 @@ import Popup from './Popup';
 
 export default function Dropdown(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  console.log(props);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -28,14 +28,14 @@ export default function Dropdown(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        <Link to="/profile">
+            <MenuItem onClick={handleClose}>{props.name.replace("_", "")}</MenuItem>
+        </Link>
         <Link to="/find">
             <MenuItem onClick={handleClose}>Find Teammates</MenuItem>
         </Link>
         <Link to="/teams">
             <MenuItem onClick={handleClose}>My Teams</MenuItem>
-        </Link>
-        <Link to="/profile">
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
         </Link>
         <Link to="/settings">
             <MenuItem onClick={handleClose}>Settings</MenuItem>

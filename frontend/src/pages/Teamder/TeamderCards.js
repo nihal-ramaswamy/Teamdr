@@ -21,12 +21,14 @@ function TeamderCards(props) {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const dispatch = useDispatch();
   const swiped = async (direction, id) => {
-    const response = await axios.post(`${BASE_URL}/api/teamder/swipe`, {
-        id: id,
-        swipe: direction,
-      },
-      getConfig()
-    )
+    if (direction == "left" || direction == "right"){
+      const response = await axios.post(`${BASE_URL}/api/teamder/swipe`, {
+          id: id,
+          swipe: direction,
+        },
+        getConfig()
+      )
+  }
     
   }
   const [userInFocus, setUserInFocus] = useState(null);
@@ -56,7 +58,7 @@ function TeamderCards(props) {
                               setUserInFocus(user);
                               setShowInfoModal(true)}}
                               style={{cursor:'pointer', color: '#183d70'}}/>
-                            <h3>{user.name}</h3>
+                            <h3 href={`/profile/${user.username}`} className = "people">{user.name}</h3>
                         </div>
                       </TeamderCard>
 

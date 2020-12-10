@@ -36,4 +36,22 @@ router.route('/reaction')
 .put(ErrorMiddleware.notSupported)
 .delete(ErrorMiddleware.notSupported);
 
+router.route('/teammate')
+.options(cors.whitelist, (req, res) => {
+    res.sendStatus(200);
+})
+.get(ErrorMiddleware.notSupported)
+.post(cors.whitelist, AuthMiddleware.verifyUser, TeamderController.TeammateStatus)
+.put(ErrorMiddleware.notSupported)
+.delete(ErrorMiddleware.notSupported);
+
+router.route('/rate')
+.options(cors.whitelist, (req, res) => {
+    res.sendStatus(200);
+})
+.get(ErrorMiddleware.notSupported)
+.post(cors.whitelist, AuthMiddleware.verifyUser, TeamderController.Rate)
+.put(ErrorMiddleware.notSupported)
+.delete(ErrorMiddleware.notSupported);
+
 module.exports = router;

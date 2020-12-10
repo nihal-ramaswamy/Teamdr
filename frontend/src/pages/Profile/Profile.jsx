@@ -272,7 +272,7 @@ const UserProfileComponent = ({ match }) => {
 						}}>
 							<div className = "show-for-web">Name: </div>
 
-							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name}</div><br />
+							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.name.replace("_", "")}</div><br />
 
 							<div className = "show-for-web"><FaGithub /> GitHub:</div>
 							<div className = "show-for-web"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{user.github ? user.github : "N/A"}</div> <br />

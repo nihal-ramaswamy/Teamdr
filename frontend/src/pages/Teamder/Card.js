@@ -34,7 +34,7 @@ export default function OutlinedCard(props) {
           Information:
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {bull}Name: {props.name}
+          {bull}Name: {props.name.replace("_", " ")}
         </Typography>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {bull}GitHub: {props.github}

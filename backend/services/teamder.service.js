@@ -72,3 +72,43 @@ exports.ReactToRequest = async (swiper, swipedId, typeOfReaction) => {
         throw e;
     }
 } 
+
+exports.TeammateStatus = async (swiper, swipedId, typeOfReaction) => {
+
+    try {
+        if (typeOfReaction === 'complete') {
+            await User.findByIdAndUpdate(swiper._id, { $addToSet: { "matchedBefore": swipedId } })
+            await User.findByIdAndUpdate(swipedId, { $addToSet: { "matchedBefore": swiper._id } })
+            await User.findByIdAndUpdate(swiper._id, { $pull: { "matched": swipedId } })
+            await User.findByIdAndUpdate(swipedId, { $pull: { "matched": swiper._id } })
+        }
+        else if (typeOfReaction === 'stop') {
+            await User.findByIdAndUpdate(swiper._id, { $pull: { "matched": swipedId } })
+            await User.findByIdAndUpdate(swipedId, { $pull: { "matched": swiper._id } })
+        }
+        else {
+            console.log('Failed to recognise swipe type: ', typeOfReaction);
+        }
+    }
+    catch (e) {
+        console.log(e);
+        throw e;
+    }
+} 
+
+exports.Rate = async (swiper, swipedId, value) => {
+
+    try {
+        let ratee = await User.findById(swipedId);
+        let teammateCount = ratee.matchedBefore.length;
+        let oldRating = ratee.rating;
+        let newRating = ((oldRating * teammateCount) + value)/(teammateCount+1);
+        await User.findByIdAndUpdate(swipedId,  {$set: {rating: newRating}});
+        return;
+
+    }
+    catch (e) {
+        console.log(e);
+        throw e;
+    }
+} 

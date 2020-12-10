@@ -75,7 +75,14 @@ var User = new mongoose.Schema(
         matched: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "User"
+                ref: "User"   
+            }
+        ],
+
+        matchedBefore: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"  
             }
         ],
 
