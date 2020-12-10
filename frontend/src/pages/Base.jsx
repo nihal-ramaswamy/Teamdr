@@ -29,6 +29,7 @@ const BaseComponent = () => {
     <div>
       <BrowserRouter>
         <Navbar />
+        <ErrorBoundary>
         <Switch>
           <Route exact path="/" component={About} />
           <Route exact path="/profile" component={UserProfileComponent} />
@@ -38,6 +39,7 @@ const BaseComponent = () => {
           <Route exact path="/profile/portfolio" component={PortfolioPage} />
           <Route exact path="/find" component={Teamder} />
         </Switch>
+          </ErrorBoundary>
         <FooterComponent />
       </BrowserRouter>
     </div>
